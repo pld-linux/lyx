@@ -2,13 +2,13 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.3.3
-Release:	2
+Version:	1.3.4
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	0f22124b000feb3c471096a1031d3722
+# Source0-md5:	13fe7a7bcec0430e9a9436f2e3cfa04e
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-libconfigure.patch
