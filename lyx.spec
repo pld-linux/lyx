@@ -32,8 +32,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_old_bindir	/usr/bin
 %define		_old_datadir	/usr/share
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 LyX is a modern approach of writing documents with a computer which
