@@ -1,9 +1,16 @@
+
+#
+#
+#
+%bcond_without	qt	# don't build with QT
+%bcond_without	gnome	# don't build with GNOME
+
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.3.5
-Release:	3
+Release:	4
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -15,6 +22,7 @@ Source2:	%{name}.png
 # it's patch from BRANCH_1_3_X
 Patch0:		%{name}-libconfigure.patch
 Patch1:		%{name}-locale_names.patch
+Patch2:		%{name}-gnome-frontend.patch
 Icon:		lyx.xpm
 URL:		http://www.lyx.org/
 BuildRequires:	XFree86-devel
@@ -23,7 +31,13 @@ BuildRequires:	aspell-devel
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
+%if %{with qt}
 BuildRequires:	qt-devel
+%endif
+%if %{with gnome}
+BuildRequires:	gtkmm-devel >= 2.4.0
+BuildRequires:	libglademm-devel >= 2.4.0
+%endif
 # for xfonts generation
 BuildRequires:	kpathsea
 BuildRequires:	tetex-fonts-type1-bluesky
@@ -68,6 +82,7 @@ selecionadas pelo editor, não pelo digitador.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 mv po/{no,nb}.po
 
@@ -81,9 +96,14 @@ CXXFLAGS="%{rpmcflags} -fno-exceptions"
 	--enable-nls \
 	--without-included-gettext \
 	%{?!debug:--without-debug} \
+%if %{with qt}
 	--with-frontend=qt \
-	--with-pspell \
-	--with-qt-includes=%{_includedir}/qt
+	--with-qt-includes=%{_includedir}/qt \
+%endif
+%if %{with gnome}
+	--with-frontend=gnome \
+%endif
+	--with-pspell 
 
 %{__make} all
 
