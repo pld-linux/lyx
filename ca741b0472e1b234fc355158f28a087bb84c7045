@@ -1,0 +1,1 @@
+- %{_sysconfdir}/X11/applnk -> %{_datadir}/applnk
