@@ -3,7 +3,7 @@ Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.3.4
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -18,7 +18,7 @@ BuildRequires:	XFree86-devel
 BuildRequires:	aiksaurus-devel
 BuildRequires:	aspell-devel
 #BuildRequires:	autoconf
-#BuildRequires:	automake
+BuildRequires:	automake
 BuildRequires:	libstdc++-devel
 BuildRequires:	qt-devel
 PreReq:		tetex
@@ -61,6 +61,9 @@ selecionadas pelo editor, não pelo digitador.
 %setup -q
 %patch0 -p1
 
+# should be config/qt.m4, but ac/am is not regenerated
+%{__perl} -pi -e 's/-lqt3 -lqt2 -lqt -lqt-mt/-lqt-mt/' configure
+
 %build
 #rm -f acinclude.m4
 #%%{__aclocal} -I config
@@ -69,6 +72,7 @@ selecionadas pelo editor, não pelo digitador.
 #%%{__autoconf}
 #cd ../..
 #%%{__automake}
+cp -f /usr/share/automake/config.* config
 CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %configure \
 	--enable-nls \
@@ -82,13 +86,13 @@ CXXFLAGS="%{rpmcflags} -fno-exceptions"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Wordprocessors,%{_pixmapsdir}} \
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}} \
 	$RPM_BUILD_ROOT%{texmfdir}/tex/latex
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Office/Wordprocessors
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 chmod a+rx $RPM_BUILD_ROOT%{_datadir}/lyx/configure
@@ -170,5 +174,5 @@ umask 022
 %{_datadir}/lyx/ui
 %{_datadir}/lyx/xfonts
 %{_mandir}/man*/*
-%{_applnkdir}/Office/Wordprocessors/*
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
