@@ -1,7 +1,7 @@
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Name:		lyx
-Version:	1.1.6fix3
+Version:	1.2.0pre4
 Release:	1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -13,7 +13,9 @@ Prereq:		tetex
 Requires:	gv
 Requires:	xdvi
 Requires:	tetex-latex
-BuildRequires:	xforms-devel >= 0.88
+#BuildRequires:	xforms-devel >= 0.88
+BuildRequires:	gtkmm-devel >= 1.2.1
+BuildRequires:	gnomemm-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	libstdc++-devel
 URL:		http://www.lyx.org/
@@ -51,7 +53,9 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 	--enable-nls \
 	--without-included-gettext \
 	%{?!debug:--without-debug} \
-	--with-gnome
+	--with-frontend=gnome \
+	--with-gnome \
+	--with-gnomemm-config-path=/usr/X11R6/lib
 
 %{__make} all
 
