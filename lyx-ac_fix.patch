@@ -1,0 +1,32 @@
+--- configure.in.orig	Wed Apr 24 17:43:48 2002
++++ configure.in	Fri May  3 10:41:43 2002
+@@ -193,7 +193,7 @@
+ 	FRONTEND_INFO=`cat <<EOF
+     libXpm version:               ${XPM_VERSION}\n\
+     libforms version:             ${XFORMS_VERSION}\n
+-`
++EOF`
+ 	;;
+   gnome)
+     LYX_PATH_XPM
+@@ -347,7 +347,7 @@
+ ${FRONTEND_INFO}\
+   LyX binary dir:                 ${real_bindir}\n\
+   LyX files dir:                  ${real_datadir}\n
+-`
++EOF`
+ 
+ AC_SUBST(VERSION_INFO)
+ 
+--- acinclude.m4~	Wed Apr 24 17:49:10 2002
++++ acinclude.m4	Fri May  3 11:45:09 2002
+@@ -81,9 +81,7 @@
+ **** (see the section 'Problems' in the INSTALL file)
+ $lyx_error_txt
+ $lyx_warning_txt
+-deleting cache $cache_file
+ EOF
+-  rm -f $cache_file
+ else
+ 
+ if test x$lyx_warning = xyes; then
