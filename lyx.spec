@@ -26,10 +26,11 @@ look.
 
 %build
 CXXFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure     --prefix=/usr/X11R6 \
-		--with-gnu-gettext \
-		--enable-nls \
-		--without-debug
+./configure %{_target} \
+	--prefix=/usr/X11R6 \
+	--with-gnu-gettext \
+	--enable-nls \
+	--without-debug
 
 make all
 
