@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=LyX
 Comment=A WYSIWYG frontend to LaTeX
-Comment[pl]=WYSIWYG nakładka na LaTeXa
+Comment[pl]=Nakładka typu WYSIWYG na LaTeXa
 Icon=lyx.png
 Exec=lyx
 Terminal=0
