@@ -14,7 +14,6 @@ Requires:	gv
 Requires:	xdvi
 Requires:	tetex
 Requires:	tetex-latex
-BuildRequires:	xpm-devel
 BuildRequires:	xforms-devel >= 0.88
 BuildRequires:	XFree86-devel
 BuildRequires:	libstdc++-devel
