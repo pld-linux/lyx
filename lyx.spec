@@ -10,7 +10,6 @@ License:	GPL
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.bz2
 # Source0-md5:	f4c70d2565ba9c974b1f94fc1dfd63bf
-# Source0-size:	5459049
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 # it's patch from BRANCH_1_3_X
