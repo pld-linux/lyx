@@ -8,6 +8,7 @@ Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
+# Source0-md5:	96c3e17c679caba577f978800d022d17
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-libconfigure.patch
