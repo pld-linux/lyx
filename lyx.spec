@@ -3,7 +3,7 @@ Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.3.4
-Release:	4
+Release:	4.1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -11,8 +11,10 @@ Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.bz2
 # Source0-md5:	13fe7a7bcec0430e9a9436f2e3cfa04e
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Patch0:		%{name}-libconfigure.patch
-Patch1:		%{name}-locale_names.patch
+# it's patch from BRANCH_1_3_X
+Patch0:		%{name}-cvs-20040910.patch
+Patch1:		%{name}-libconfigure.patch
+Patch2:		%{name}-locale_names.patch
 Icon:		lyx.xpm
 URL:		http://www.lyx.org/
 BuildRequires:	XFree86-devel
@@ -62,6 +64,7 @@ selecionadas pelo editor, não pelo digitador.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 mv po/{no,nb}.po
 
@@ -69,13 +72,7 @@ mv po/{no,nb}.po
 %{__perl} -pi -e 's/-lqt3 -lqt2 -lqt -lqt-mt/-lqt-mt/' configure
 
 %build
-#rm -f acinclude.m4
-#%%{__aclocal} -I config
-#%%{__autoconf}
-#cd lib/reLyX
-#%%{__autoconf}
-#cd ../..
-#%%{__automake}
+./autogen.sh
 cp -f /usr/share/automake/config.* config
 CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %configure \
