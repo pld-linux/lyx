@@ -17,8 +17,6 @@ Requires:	tetex-latex
 BuildRequires:	xforms-devel >= 0.88
 BuildRequires:	XFree86-devel
 BuildRequires:	libstdc++-devel
-# we don't have xforms for sparc, yet
-Exclusivearch:	%{ix86} alpha
 URL:		http://www.lyx.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
