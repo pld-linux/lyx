@@ -14,7 +14,7 @@ Source2:	%{name}.png
 Patch0:		%{name}-libconfigure.patch
 Icon:		lyx.xpm
 URL:		http://www.lyx.org/
-BuildRequires:  Aiksaurus-devel
+BuildRequires:	Aiksaurus-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
