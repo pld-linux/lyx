@@ -1,7 +1,7 @@
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Name:		lyx
-Version:	1.1.6
+Version:	1.1.6fix1
 Release:	1
 License:	GPL
 Group:		Applications/Publishing/TeX
