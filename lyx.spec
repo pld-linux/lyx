@@ -69,39 +69,20 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755, root, root) /usr/X11R6/share/lyx/configure
 /usr/X11R6/share/lyx/chkconfig.ltx
 /usr/X11R6/share/lyx/CREDITS
-%dir /usr/X11R6/share/lyx/bind
-/usr/X11R6/share/lyx/bind/*
-%dir /usr/X11R6/share/lyx/clipart
-/usr/X11R6/share/lyx/clipart/*
+/usr/X11R6/share/lyx/bind
+/usr/X11R6/share/lyx/clipart
 %dir /usr/X11R6/share/lyx/doc
-/usr/X11R6/share/lyx/doc/AdvancedEdit.lyx
-/usr/X11R6/share/lyx/doc/BUGS.lyx
-/usr/X11R6/share/lyx/doc/Customization.lyx
-/usr/X11R6/share/lyx/doc/HowDoI-.lyx
-/usr/X11R6/share/lyx/doc/Intro.lyx
+/usr/X11R6/share/lyx/doc/*.lyx
 /usr/X11R6/share/lyx/doc/LaTeXConfig.lyx.in
-/usr/X11R6/share/lyx/doc/Reference.lyx
-/usr/X11R6/share/lyx/doc/Tutorial.lyx
-/usr/X11R6/share/lyx/doc/UserGuide.lyx
 /usr/X11R6/share/lyx/doc/*.eps
-%dir /usr/X11R6/share/lyx/examples
-/usr/X11R6/share/lyx/examples/*
-%dir /usr/X11R6/share/lyx/kbd
-/usr/X11R6/share/lyx/kbd/*
-%dir /usr/X11R6/share/lyx/images
-/usr/X11R6/share/lyx/images/*
-%dir /usr/X11R6/share/lyx/layouts
-/usr/X11R6/share/lyx/layouts/*
-%dir /usr/X11R6/share/lyx/reLyX/
-/usr/X11R6/share/lyx/reLyX/*pl
-/usr/X11R6/share/lyx/reLyX/*pm
-/usr/X11R6/share/lyx/reLyX/syntax.default
-%dir /usr/X11R6/share/lyx/reLyX/Text
-/usr/X11R6/share/lyx/reLyX/Text/*
-%dir /usr/X11R6/share/lyx/templates
-/usr/X11R6/share/lyx/templates/*
-%dir /usr/X11R6/share/lyx/tex
-/usr/X11R6/share/lyx/tex/*
+/usr/X11R6/share/lyx/examples
+/usr/X11R6/share/lyx/kbd
+/usr/X11R6/share/lyx/images
+/usr/X11R6/share/lyx/layouts
+/usr/X11R6/share/lyx/reLyX
+/usr/X11R6/share/lyx/templates
+/usr/X11R6/share/lyx/tex
+
 %lang(da) /usr/X11R6/share/locale/da/LC_MESSAGES/lyx.mo
 %lang(de) /usr/X11R6/share/locale/de/LC_MESSAGES/lyx.mo
 %lang(es) /usr/X11R6/share/locale/es/LC_MESSAGES/lyx.mo
