@@ -1,5 +1,6 @@
---- lyx-1.2.3/lib/configure.old	Tue Feb 11 22:03:29 2003
-+++ lyx-1.2.3/lib/configure	Tue Feb 11 22:07:37 2003
+diff -urN lyx-1.3.1.org/lib/configure lyx-1.3.1/lib/configure
+--- lyx-1.3.1.org/lib/configure	Tue Mar 25 09:22:48 2003
++++ lyx-1.3.1/lib/configure	Tue Mar 25 09:23:58 2003
 @@ -188,8 +188,8 @@
  
  fi
@@ -81,20 +82,18 @@
 -test $dvi_to_pdf_command = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
 +test "$dvi_to_pdf_command" = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
  
- # Search a *roff program (used to translate tables in ASCII export)
- echo $ac_n "checking for a *roff formatter""... $ac_c"
-@@ -858,8 +858,8 @@
+ # We have a script to convert previewlyx to ppm
+ lyxpreview_to_bitmap_command="lyxpreview2bitmap.sh"
+@@ -931,7 +931,7 @@
    fax_command=none
  fi
  
--test $fax_command = "kdeprintfax" && fax_command="kdeprintfax \$\$i"
--test $fax_command = "ksendfax" && fax_command="ksendfax \$\$i"
-+test "$fax_command" = "kdeprintfax" && fax_command="kdeprintfax \$\$i"
-+test "$fax_command" = "ksendfax" && fax_command="ksendfax \$\$i"
+-test $fax_command != "none" && fax_command="$fax_command \$\$i"
++test "$fax_command" != "none" && fax_command="$fax_command \$\$i"
  
  # Search for LinuxDoc support
  echo $ac_n "checking for SGML-tools 1.x (LinuxDoc)""... $ac_c"
-@@ -897,7 +897,7 @@
+@@ -969,7 +969,7 @@
  fi
  
  chk_linuxdoc=no
@@ -103,7 +102,7 @@
    chk_linuxdoc=yes
    linuxdoc_cmd="\\def\\haslinuxdoc{yes}"
  fi
-@@ -951,7 +951,7 @@
+@@ -1023,7 +1023,7 @@
  fi
  
  chk_docbook=no
