@@ -67,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc ANNOUNCE APPLIED_PATCHES BUGS CHANGES README TODO
 %config(missingok) /etc/X11/wmconfig/*
 %attr(755, root, root) /usr/X11R6/bin/*
-%attr(644, root,  man) /usr/X11R6/man/man1/*
+/usr/X11R6/man/man1/*
 %dir /usr/X11R6/share/lyx
 %attr(755, root, root) /usr/X11R6/share/lyx/configure
 /usr/X11R6/share/lyx/chkconfig.ltx
