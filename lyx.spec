@@ -125,7 +125,50 @@ umask 022
 %doc ANNOUNCE README NEWS
 %attr(755,root,root) %{_bindir}/*
 %dir %{texmfdir}/tex/latex/lyx
-%attr(-, root,root) %{_datadir}/lyx
+%dir %{_datadir}/lyx
+%{_datadir}/lyx/CREDITS
+%{_datadir}/lyx/bind
+%{_datadir}/lyx/chkconfig.ltx
+%{_datadir}/lyx/clipart
+%attr(755,root,root) %{_datadir}/lyx/configure*
+%dir %{_datadir}/lyx/doc
+%{_datadir}/lyx/doc/[A-Z]*
+%{_datadir}/lyx/doc/*.eps
+%lang(cs) %{_datadir}/lyx/doc/cs_*
+%lang(da) %{_datadir}/lyx/doc/da_*
+%lang(de) %{_datadir}/lyx/doc/de_*
+%lang(es) %{_datadir}/lyx/doc/es_*
+%lang(eu) %{_datadir}/lyx/doc/eu_*
+%lang(fr) %{_datadir}/lyx/doc/fr_*
+%lang(he) %{_datadir}/lyx/doc/he_*
+%lang(hu) %{_datadir}/lyx/doc/hu_*
+%lang(it) %{_datadir}/lyx/doc/it_*
+%lang(nl) %{_datadir}/lyx/doc/nl_*
+%lang(pl) %{_datadir}/lyx/doc/pl_*
+%lang(pt) %{_datadir}/lyx/doc/pt_*
+%lang(ro) %{_datadir}/lyx/doc/ro_*
+%lang(ru) %{_datadir}/lyx/doc/ru_*
+%lang(sk) %{_datadir}/lyx/doc/sk_*
+%lang(sl) %{_datadir}/lyx/doc/sl_*
+%lang(sv) %{_datadir}/lyx/doc/sv_*
+%{_datadir}/lyx/encodings
+%{_datadir}/lyx/examples
+%{_datadir}/lyx/external_templates
+%{_datadir}/lyx/help
+%{_datadir}/lyx/images
+%{_datadir}/lyx/kbd
+%{_datadir}/lyx/languages
+%{_datadir}/lyx/layouts
+%attr(755,root,root) %{_datadir}/lyx/lyx2lyx
+%{_datadir}/lyx/lyxrc.*
+%{_datadir}/lyx/reLyX
+%attr(755,root,root) %{_datadir}/lyx/scripts
+%{_datadir}/lyx/symbols
+%{_datadir}/lyx/templates
+%{_datadir}/lyx/tex
+%{_datadir}/lyx/textclass.lst
+%{_datadir}/lyx/ui
+%{_datadir}/lyx/xfonts
 %{_mandir}/man*/*
 %{_applnkdir}/Office/Wordprocessors/*
 %{_pixmapsdir}/*
