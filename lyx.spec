@@ -16,6 +16,8 @@ Patch2:		%{name}-alpha.patch
 Icon:		lyx.xpm
 URL:		http://www.lyx.org/
 BuildRequires:	XFree86-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
 #BuildRequires:	gnomemm-devel
 #BuildRequires:	gtkmm-devel >= 1.2.1
 BuildRequires:	libstdc++-devel
@@ -68,7 +70,7 @@ selecionadas pelo editor, não pelo digitador.
 
 %build
 rm acinclude.m4 #stupid aclocal
-aclocal -I config
+%{__aclocal} -I config
 %{__autoconf}
 cd sigc++
 %{__autoconf}
