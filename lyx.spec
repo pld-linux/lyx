@@ -15,7 +15,6 @@ Source2:	%{name}.png
 Patch0:		%{name}-cvs-20040923.patch
 Patch1:		%{name}-libconfigure.patch
 Patch2:		%{name}-locale_names.patch
-Patch3:		%{name}-pl.patch
 Icon:		lyx.xpm
 URL:		http://www.lyx.org/
 BuildRequires:	XFree86-devel
@@ -66,7 +65,6 @@ selecionadas pelo editor, não pelo digitador.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 mv po/{no,nb}.po
 
