@@ -1,10 +1,10 @@
 Summary:     A WYSIWYG frontend to LaTeX
 Name:        lyx
-Version:     0.12.1pre8
+Version:     1.0.0pre2
 Release:     1
-Source0:     ftp://ftp.via.ecp.fr/pub/lyx/devel/0.13/%{name}-%{version}.tar.gz
+Source0:     ftp://ftp.via.ecp.fr/pub/lyx/devel/stable/%{name}-%{version}.tar.gz
 Source1:     %{name}.wmconfig
-Serial:      00120108
+Serial:      01000002
 Copyright:   GPL
 Group:       X11/Applications/Publishing
 Requires:    xforms >= 0.88, gv, tetex-xdvi, tetex, tetex-latex
