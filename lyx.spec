@@ -65,7 +65,8 @@ selecionadas pelo editor, não pelo digitador.
 %patch1
 
 %build
-aclocal
+rm acinclude.m4 #stupid aclocal
+aclocal -I config
 %{__autoconf}
 cd sigc++
 %{__autoconf}
