@@ -3,7 +3,7 @@ Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.2.0
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -12,19 +12,20 @@ Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-am_fix.patch
 Patch1:		%{name}-ac_fix.patch
+Patch2:		%{name}-alpha.patch
 Icon:		lyx.xpm
-Prereq:		tetex
-Requires:	gv
-Requires:	xdvi
-Requires:	tetex-latex
-Requires:	tetex-fonts
+URL:		http://www.lyx.org/
+BuildRequires:	XFree86-devel
+#BuildRequires:	gnomemm-devel
+#BuildRequires:	gtkmm-devel >= 1.2.1
+BuildRequires:	libstdc++-devel
 BuildRequires:	tetex-fonts
 BuildRequires:	xforms-devel >= 0.88
-#BuildRequires:	gtkmm-devel >= 1.2.1
-#BuildRequires:	gnomemm-devel
-BuildRequires:	XFree86-devel
-BuildRequires:	libstdc++-devel
-URL:		http://www.lyx.org/
+Prereq:		tetex
+Requires:	gv
+Requires:	tetex-fonts
+Requires:	tetex-latex
+Requires:	xdvi
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_old_bindir	/usr/bin
@@ -62,7 +63,8 @@ selecionadas pelo editor, não pelo digitador.
 %prep
 %setup -q
 %patch0 -p1
-%patch1
+%patch1 -p0
+%patch2 -p1
 
 %build
 rm acinclude.m4 #stupid aclocal
@@ -114,15 +116,15 @@ if [ -f lyxrc.defaults ]; then
 	cp -p lyxrc.defaults lyxrc
 fi
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %postun
 %{_old_bindir}/texhash
 
 %preun
 rm -f %{_datadir}/lyx/{lyxrc.defaults,lyxrc*}
 rm -f %{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
