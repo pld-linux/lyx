@@ -1,7 +1,7 @@
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Name:		lyx
-Version:	1.1.6fix1
+Version:	1.1.6fix3
 Release:	1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -49,7 +49,7 @@ na zawarto¶ci dokumentu podczas gdy komputer zajmie siê ca³± reszt±.
 
 %build
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
-%configure \
+%configure2_13 \
 	--enable-nls \
 	--without-included-gettext \
 	--without-debug \
