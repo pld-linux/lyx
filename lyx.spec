@@ -1,7 +1,7 @@
 Summary:     A WYSIWYG frontend to LaTeX
 Name:        lyx
-Version:     1.0.0pre2
-Release:     2
+Version:     1.0.3
+Release:     1
 Source0:     ftp://ftp.via.ecp.fr/pub/lyx/devel/stable/%{name}-%{version}.tar.gz
 Source1:     %{name}.wmconfig
 Serial:      01000002
