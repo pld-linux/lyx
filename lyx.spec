@@ -5,8 +5,6 @@ Version:	1.1.6fix3
 Release:	1
 License:	GPL
 Group:		Applications/Publishing/TeX
-Group(de):	Applikationen/Publizieren/TeX
-Group(pl):	Aplikacje/Publikowanie/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
