@@ -24,6 +24,10 @@ BuildRequires:	aspell-devel
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
 BuildRequires:	qt-devel
+# for xfonts generation
+BuildRequires:	kpathsea
+BuildRequires:	tetex-fonts-type1-bluesky
+BuildRequires:	tetex-fonts-type1-hoekwater
 PreReq:		tetex
 Requires:	gv
 Requires:	python-modules
