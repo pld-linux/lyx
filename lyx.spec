@@ -65,8 +65,8 @@ install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Editors,%{_datadir}/pixmaps} \
 	$RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT \
-	     localedir=$RPM_BUILD_ROOT%{_datadir}/locale \
-	     gnulocaledir=$RPM_BUILD_ROOT%{_datadir}/locale
+	localedir=$RPM_BUILD_ROOT%{_datadir}/locale \
+	gnulocaledir=$RPM_BUILD_ROOT%{_datadir}/locale
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Office/Editors
 install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
