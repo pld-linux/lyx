@@ -134,7 +134,7 @@ rm -rf $RPM_BUILD_ROOT
 - added reLyX script,
 - removed COPYING from %doc (copyright statment is in Copyright field),
 - added %lang macros for gettext mo data files in
-  /usr/share/locale/*/LC_MESSAGES/lyx.mo (requires rpm >= 2.4.99),
+  %{_datadir}/locale/*/LC_MESSAGES/lyx.mo (requires rpm >= 2.4.99),
 - changed %post, %postun.
 - added %defattr in %files (requires rpm >= 2.4.99).
 - added using %{SOURCE#} macro in %install,
@@ -170,8 +170,8 @@ rm -rf $RPM_BUILD_ROOT
 
 * Sat Sep  6 1997 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [0.11.36-1]
-- added "gnulocaledir=/usr/share/locale" to make all in %build,
-- fixed path in gnulocaledir to $RPM_BUILD_ROOT/usr/share/locale in
+- added "gnulocaledir=%{_datadir}/locale" to make all in %build,
+- fixed path in gnulocaledir to $RPM_BUILD_ROOT%{_datadir}/locale in
   make install (%install).
 
 * Wed Aug 13 1997 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
