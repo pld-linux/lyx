@@ -3,7 +3,7 @@ Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.3.1
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
