@@ -2,6 +2,7 @@
 Name=LyX
 Comment=A WYSIWYG frontend to LaTeX
 Comment[pl]=WYSIWYG nak³adka na LaTeXa
+Icon=lyx.png
 Exec=lyx
 Terminal=0
 Type=Applications/Editors
