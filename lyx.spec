@@ -5,7 +5,7 @@ Release:	1
 Source0:	ftp://ftp.via.ecp.fr/pub/lyx/devel/stable/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Patch:		lyx-DESTDIR.patch
-Serial:		01000004
+Serial:		0100400
 Copyright:	GPL
 Group:		X11/Applications/Publishing
 Requires:	xforms >= 0.88, gv, xdvi, tetex, tetex-latex
