@@ -39,13 +39,13 @@ make all
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/etc/X11/applnk/Applications
+install -d $RPM_BUILD_ROOT/usr/X11R6/share/applnk/Applications
 
 make install DESTDIR=$RPM_BUILD_ROOT \
 	localedir=$RPM_BUILD_ROOT%{_datadir}/locale \
 	gnulocaledir=$RPM_BUILD_ROOT%{_datadir}/locale
 
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/applnk/Applications
+install %{SOURCE1} $RPM_BUILD_ROOT/usr/X11R6/share/applnk/Applications
 
 rm -f $RPM_BUILD_ROOT%{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 
@@ -73,7 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc {ANNOUNCE,CHANGES,README,UPGRADING,WHATSNEW}.gz
-%config(missingok) /etc/X11/applnk/Applications/*
+%config(missingok) /usr/X11R6/share/applnk/Applications/*
 %attr(755,root,root) %{_bindir}/*
 %dir %{_datadir}/lyx
 %dir %{_datadir}/lyx/doc
