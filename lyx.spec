@@ -55,13 +55,13 @@ na zawarto¶ci dokumentu podczas gdy komputer zajmie siê ca³± reszt±.
 
 %build
 aclocal
-autoconf
+%{__autoconf}
 cd sigc++
-autoconf
+%{__autoconf}
 cd ../lib/reLyX
-autoconf
+%{__autoconf}
 cd ../..
-automake -a -c -f
+%{__automake}
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 %configure \
 	--enable-nls \
