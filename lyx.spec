@@ -1,15 +1,12 @@
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Name:		lyx
-Version:	1.1.4fix3
+Version:	1.1.5
 Release:	1
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
-Patch0:		ftp://ftp.lyx.org/pub/lyx/devel/stable/patch-1.1.4fix1.gz
-Patch1:		ftp://ftp.lyx.org/pub/lyx/devel/stable/patch-1.1.4fix2.gz
-Patch2:		ftp://ftp.lyx.org/pub/lyx/devel/stable/patch-1.1.4fix3.gz
-Patch3:		lyx-pl.patch
-Patch4:		lyx-DESTDIR.patch
+#Patch0:		lyx-pl.patch
+#Patch1:		lyx-DESTDIR.patch
 License:	GPL
 Group:		Applications/Publishing/TeX
 Group(pl):	Aplikacje/Publikowanie/TeX
@@ -19,7 +16,7 @@ Requires:	tetex
 Requires:	tetex-latex
 BuildRequires:	xpm-devel
 BuildRequires:	xforms-devel >= 0.88
-BuildRequires:	XFree86-libs-devel
+BuildRequires:	XFree86-devel
 BuildRequires:	libstdc++-devel
 URL:		http://www.lyx.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -49,11 +46,8 @@ podczas gdy komputer zajmie siê ca³± reszt±.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+#%patch0 -p1
+#%patch1 -p1
 
 %build
 LDFLAGS="-s"; export LDFLAGS
