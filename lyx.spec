@@ -15,6 +15,8 @@ Prereq:		tetex
 Requires:	gv
 Requires:	xdvi
 Requires:	tetex-latex
+Requires:	tetex-fonts
+BuildRequires:	tetex-fonts
 BuildRequires:	xforms-devel >= 0.88
 #BuildRequires:	gtkmm-devel >= 1.2.1
 #BuildRequires:	gnomemm-devel
