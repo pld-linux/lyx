@@ -86,7 +86,7 @@
 @@ -858,8 +858,8 @@
    fax_command=none
  fi
-     
+ 
 -test $fax_command = "kdeprintfax" && fax_command="kdeprintfax \$\$i"
 -test $fax_command = "ksendfax" && fax_command="ksendfax \$\$i"
 +test "$fax_command" = "kdeprintfax" && fax_command="kdeprintfax \$\$i"
