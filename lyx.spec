@@ -2,8 +2,8 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.2.0
-Release:	4
+Version:	1.2.3
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -12,7 +12,6 @@ Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-am_fix.patch
 Patch1:		%{name}-ac_fix.patch
-Patch2:		%{name}-alpha.patch
 Icon:		lyx.xpm
 URL:		http://www.lyx.org/
 BuildRequires:	XFree86-devel
@@ -66,10 +65,9 @@ selecionadas pelo editor, não pelo digitador.
 %setup -q
 %patch0 -p1
 %patch1 -p0
-%patch2 -p1
 
 %build
-rm acinclude.m4 #stupid aclocal
+rm -f acinclude.m4
 %{__aclocal} -I config
 %{__autoconf}
 cd sigc++
@@ -92,7 +90,7 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Wordprocessors,%{_datadir}/pixmaps} \
+install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Wordprocessors,%{_pixmapsdir}} \
 	$RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
@@ -100,7 +98,7 @@ install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Wordprocessors,%{_datadir}/pixma
 #	gnulocaledir=$RPM_BUILD_ROOT%{_datadir}/locale
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Office/Wordprocessors
-install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
+install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 chmod a+rx $RPM_BUILD_ROOT%{_datadir}/lyx/configure
 
@@ -108,6 +106,9 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 ln -sf %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/lyx
 
 %find_lang %{name}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %post
 umask 022
@@ -117,9 +118,6 @@ cd %{_datadir}/lyx/
 if [ -f lyxrc.defaults ]; then
 	cp -p lyxrc.defaults lyxrc
 fi
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %postun
 %{_old_bindir}/texhash
