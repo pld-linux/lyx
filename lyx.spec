@@ -3,7 +3,7 @@ Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.3.5
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -20,7 +20,7 @@ URL:		http://www.lyx.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	aiksaurus-devel
 BuildRequires:	aspell-devel
-#BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
 BuildRequires:	qt-devel
@@ -71,8 +71,7 @@ selecionadas pelo editor, não pelo digitador.
 
 mv po/{no,nb}.po
 
-# should be config/qt.m4, but ac/am is not regenerated
-%{__perl} -pi -e 's/-lqt3 -lqt2 -lqt -lqt-mt/-lqt-mt/' configure
+%{__perl} -pi -e 's/-lqt3 -lqt2 -lqt -lqt-mt/-lqt-mt/' config/qt.m4
 
 %build
 ./autogen.sh
