@@ -1,0 +1,206 @@
+Summary:     A WYSIWYG frontend to LaTeX
+Name:        lyx
+Version:     0.12.1pre8
+Release:     1
+Source0:     ftp://ftp.via.ecp.fr/pub/lyx/devel/0.13/%{name}-%{version}.tar.gz
+Source1:     %{name}.wmconfig
+Serial:      00120108
+Copyright:   GPL
+Group:       X11/Applications/Publishing
+Requires:    xforms >= 0.88, gv, tetex-xdvi, tetex, tetex-latex
+URL:         http://www.lyx.org/
+Buildroot:   /tmp/%{name}-%{version}-root
+
+%description
+LyX is a modern approach of writing documents with a computer which breaks
+with the tradition of the obsolete typewriter concept. It is designed for
+people who want a professional output with a minimum of time effort, without
+becoming specialists in typesetting.  Compared to common word processors LyX
+will increase the productivity a lot, since most of the typesetting will be
+done by the computer, not the author.  With LyX the author can concentrate
+on the contents of his writing, since the computer will take care of the
+look.
+
+%prep
+%setup -q
+
+%build
+CXXFLAGS="$RPM_OPT_FLAGS" \
+./configure     --prefix=/usr/X11R6 \
+		--with-gnu-gettext \
+		--enable-nls \
+		--without-debug
+
+make all
+
+%install
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/etc/X11/wmconfig
+
+make	install prefix=$RPM_BUILD_ROOT/usr/X11R6
+
+strip $RPM_BUILD_ROOT/usr/X11R6/bin/lyx
+
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lyx
+
+rm -f $RPM_BUILD_ROOT/usr/X11R6/share/lyx/{doc/LaTeXConfig.lyx,packages.lst}
+
+%post
+cd /usr/X11R6/share/lyx/
+./configure > /dev/null
+if [ -f lyxrc.defaults ]; then
+	cp lyxrc.defaults lyxrc
+fi
+
+%preun
+rm -f /usr/X11R6/share/lyx/{lyxrc.defaults,lyxrc*}
+rm -f /usr/X11R6/share/lyx/{doc/LaTeXConfig.lyx,packages.lst}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(644, root, root, 755)
+%doc ANNOUNCE APPLIED_PATCHES BUGS CHANGES README TODO
+%config(missingok) /etc/X11/wmconfig/*
+%attr(755, root, root) /usr/X11R6/bin/*
+%attr(644, root,  man) /usr/X11R6/man/man1/*
+%dir /usr/X11R6/share/lyx
+%attr(755, root, root) /usr/X11R6/share/lyx/configure
+/usr/X11R6/share/lyx/chkconfig.ltx
+/usr/X11R6/share/lyx/CREDITS
+%dir /usr/X11R6/share/lyx/bind
+/usr/X11R6/share/lyx/bind/*
+%dir /usr/X11R6/share/lyx/clipart
+/usr/X11R6/share/lyx/clipart/*
+%dir /usr/X11R6/share/lyx/doc
+/usr/X11R6/share/lyx/doc/AdvancedEdit.lyx
+/usr/X11R6/share/lyx/doc/BUGS.lyx
+/usr/X11R6/share/lyx/doc/Customization.lyx
+/usr/X11R6/share/lyx/doc/HowDoI-.lyx
+/usr/X11R6/share/lyx/doc/Intro.lyx
+/usr/X11R6/share/lyx/doc/LaTeXConfig.lyx.in
+/usr/X11R6/share/lyx/doc/Reference.lyx
+/usr/X11R6/share/lyx/doc/Tutorial.lyx
+/usr/X11R6/share/lyx/doc/UserGuide.lyx
+/usr/X11R6/share/lyx/doc/*.eps
+%dir /usr/X11R6/share/lyx/examples
+/usr/X11R6/share/lyx/examples/*
+%dir /usr/X11R6/share/lyx/kbd
+/usr/X11R6/share/lyx/kbd/*
+%dir /usr/X11R6/share/lyx/images
+/usr/X11R6/share/lyx/images/*
+%dir /usr/X11R6/share/lyx/layouts
+/usr/X11R6/share/lyx/layouts/*
+%dir /usr/X11R6/share/lyx/reLyX/
+/usr/X11R6/share/lyx/reLyX/*pl
+/usr/X11R6/share/lyx/reLyX/*pm
+/usr/X11R6/share/lyx/reLyX/syntax.default
+%dir /usr/X11R6/share/lyx/reLyX/Text
+/usr/X11R6/share/lyx/reLyX/Text/*
+%dir /usr/X11R6/share/lyx/templates
+/usr/X11R6/share/lyx/templates/*
+%dir /usr/X11R6/share/lyx/tex
+/usr/X11R6/share/lyx/tex/*
+%lang(da) /usr/X11R6/share/locale/da/LC_MESSAGES/lyx.mo
+%lang(de) /usr/X11R6/share/locale/de/LC_MESSAGES/lyx.mo
+%lang(es) /usr/X11R6/share/locale/es/LC_MESSAGES/lyx.mo
+%lang(fi) /usr/X11R6/share/locale/fi/LC_MESSAGES/lyx.mo
+%lang(fr) /usr/X11R6/share/locale/fr/LC_MESSAGES/lyx.mo
+%lang(hu) /usr/X11R6/share/locale/hu/LC_MESSAGES/lyx.mo
+%lang(nl) /usr/X11R6/share/locale/nl/LC_MESSAGES/lyx.mo
+%lang(no) /usr/X11R6/share/locale/no/LC_MESSAGES/lyx.mo
+%lang(sv) /usr/X11R6/share/locale/sv/LC_MESSAGES/lyx.mo
+%lang(tr) /usr/X11R6/share/locale/tr/LC_MESSAGES/lyx.mo
+
+%changelog
+* Fri Sep 25 1998 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+  [0.12.0pre8-1]
+- .mo files moved to /usr/X11R6/share/locale/*/LC_MESSAGES/.
+
+* Mon May 18 1998 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+  [0.12.0pre5-1]
+- changer URL to http://www.lyx.org/,
+- fixed xforms dependences (now LyX require xforms 0.88; thanks to Ed
+  Young),
+- added Serial field which will be calculated as: <major_ver> * 10^8 +
+  <minor_ver> + 10^6 + <rev> * 10^4 + <pre> * 10^2 Current for 0.12.1pre5 is
+  00120105. <pre> = 99 is reserved for finan version. Serial number is added
+  because strigs from following LyX versions not always fulfils rules
+  "current.version" > "previouse.version" witch disallow slight upgrade
+  using LyX version,
+- modified file list in %files in /usr/X11R6/share/lyx/doc/ and added
+  /usr/X11R6/share/lyx/reLyX files.
+
+* Wed May  6 1998 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+  [0.12.0-1]
+- added --without-debug to configure parameters,
+- removed Packager field from spec (if you want recompile package and
+  redistribute this package later put this in your private .rpmrc). 
+- added removing /usr/X11R6/share/lyx/{doc/LaTeXConfig.lyx,packages.lst}
+  during install (this files are generated by /usr/X11R6/share/lyx/configure
+  in %post),
+- added wmconfig registration file,
+- added reLyX script,
+- removed COPYING from %doc (copyright statment is in Copyright field),
+- added %lang macros for gettext mo data files in
+  /usr/share/locale/*/LC_MESSAGES/lyx.mo (requires rpm >= 2.4.99),
+- changed %post, %postun.
+- added %defattr in %files (requires rpm >= 2.4.99).
+- added using %{SOURCE#} macro in %install,
+- %%{version} macro instead %%{PACKAGE_VERSION},
+- added -q %setup parameter,
+- added using %%{name} macro in Buildroot and Source fields.
+
+* Sat Nov 22 1997 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+  [0.11.52-2]
+- stoped removing /usr/X11R6/share/lyx/CREDITS (neccesary for dialog Help->
+  Credits ..),
+- fixed localedir on compile time,
+- changed URL (to LyX homepage).
+
+* Thu Nov 20 1997 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+  [0.11.52-1]
+- "rm -rf $RPM_BUILD_ROOT" moved from %prep to %install,
+- added %clear section,
+- fixed entry in %files for *.mo Locale messages files.
+
+* Wed Nov  5 1997 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+  [0.11.47-1]
+- added in Requires: gv, tetex-xdvi, tetex, tetex-latex
+- added removing /usr/X11R6/share/lyx/lyxrc in %preun.
+
+* Thu Sep 18 1997 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+  [0.11.40-1]
+- added missing /usr/X11R6/share/lyx/images.
+
+* Fri Sep 12 1997 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+  [0.11.37-1]
+- changed %attr in %doc to (-, root, root).
+
+* Sat Sep  6 1997 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+  [0.11.36-1]
+- added "gnulocaledir=/usr/share/locale" to make all in %build,
+- fixed path in gnulocaledir to $RPM_BUILD_ROOT/usr/share/locale in
+  make install (%install).
+
+* Wed Aug 13 1997 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+  [0.11.35-1]
+- added --with-gnu-gettext and --enable-nls to configure,
+- added mised %attr in %files,
+- /usr/X11R6/share/lyx/CREDITS moved to %doc,
+- changed Build root to /tmp/lyx-%%{PACKAGE_VERSION}-root
+- added %post and %preun.
+
+* Wed Aug 6 1997 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+- added %attr macros in %files (allow build package from non root account),
+- added striping latex2lyx.
+
+* Tue Jun 1 1997 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+  [0.11.29.1-1]
+- in "Source:" macro %%{PACKAGE_VERSION}.
+
+* Tue May 27 1997 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+- changed prefix to /usr/X11R6,
+- rewrited spec for using Buildroot,
+- added URL.
