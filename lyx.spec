@@ -3,7 +3,7 @@ Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.2.0
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -103,8 +103,6 @@ chmod a+rx $RPM_BUILD_ROOT%{_datadir}/lyx/configure
 rm -f $RPM_BUILD_ROOT%{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 ln -sf %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/lyx
 
-gzip -9nf ANNOUNCE README NEWS
-
 %find_lang %{name}
 
 %post
@@ -128,7 +126,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc {ANNOUNCE,README,NEWS}.gz
+%doc ANNOUNCE README NEWS
 %attr(755,root,root) %{_bindir}/*
 %dir %{_old_datadir}/texmf/tex/latex/lyx
 %attr(-, root,root) %{_datadir}/lyx
