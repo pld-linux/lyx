@@ -48,6 +48,8 @@ gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/man/man1/*
 
 rm -f $RPM_BUILD_ROOT/usr/X11R6/share/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 
+%find_lang %{name}
+
 %post
 cd /usr/X11R6/share/lyx/
 ./configure > /dev/null
@@ -62,7 +64,7 @@ rm -f /usr/X11R6/share/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc ANNOUNCE APPLIED_PATCHES BUGS CHANGES README TODO
 %config(missingok) /etc/X11/wmconfig/*
@@ -85,17 +87,6 @@ rm -rf $RPM_BUILD_ROOT
 /usr/X11R6/share/lyx/reLyX
 /usr/X11R6/share/lyx/templates
 /usr/X11R6/share/lyx/tex
-
-%lang(da) /usr/X11R6/share/locale/da/LC_MESSAGES/lyx.mo
-%lang(de) /usr/X11R6/share/locale/de/LC_MESSAGES/lyx.mo
-%lang(es) /usr/X11R6/share/locale/es/LC_MESSAGES/lyx.mo
-%lang(fi) /usr/X11R6/share/locale/fi/LC_MESSAGES/lyx.mo
-%lang(fr) /usr/X11R6/share/locale/fr/LC_MESSAGES/lyx.mo
-%lang(hu) /usr/X11R6/share/locale/hu/LC_MESSAGES/lyx.mo
-%lang(nl) /usr/X11R6/share/locale/nl/LC_MESSAGES/lyx.mo
-%lang(no) /usr/X11R6/share/locale/no/LC_MESSAGES/lyx.mo
-%lang(sv) /usr/X11R6/share/locale/sv/LC_MESSAGES/lyx.mo
-%lang(tr) /usr/X11R6/share/locale/tr/LC_MESSAGES/lyx.mo
 
 %changelog
 * Wed Dec  9 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
