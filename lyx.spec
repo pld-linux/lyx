@@ -8,7 +8,7 @@ Patch:		lyx-DESTDIR.patch
 Serial:		01000003
 Copyright:	GPL
 Group:		X11/Applications/Publishing
-Requires:	xforms >= 0.88, gv, tetex-xdvi, tetex, tetex-latex
+Requires:	xforms >= 0.88, gv, xdvi, tetex, tetex-latex
 URL:		http://www.lyx.org/
 Buildroot:	/tmp/%{name}-%{version}-root
 
