@@ -1,15 +1,19 @@
-Summary:     A WYSIWYG frontend to LaTeX
-Name:        lyx
-Version:     1.0.3
-Release:     1
-Source0:     ftp://ftp.via.ecp.fr/pub/lyx/devel/stable/%{name}-%{version}.tar.gz
-Source1:     %{name}.wmconfig
-Serial:      01000002
-Copyright:   GPL
-Group:       X11/Applications/Publishing
-Requires:    xforms >= 0.88, gv, tetex-xdvi, tetex, tetex-latex
-URL:         http://www.lyx.org/
-Buildroot:   /tmp/%{name}-%{version}-root
+Summary:	A WYSIWYG frontend to LaTeX
+Name:		lyx
+Version:	1.0.3
+Release:	1
+Source0:	ftp://ftp.via.ecp.fr/pub/lyx/devel/stable/%{name}-%{version}.tar.gz
+Source1:	%{name}.desktop
+Patch:		lyx-DESTDIR.patch
+Serial:		01000003
+Copyright:	GPL
+Group:		X11/Applications/Publishing
+Requires:	xforms >= 0.88, gv, tetex-xdvi, tetex, tetex-latex
+URL:		http://www.lyx.org/
+Buildroot:	/tmp/%{name}-%{version}-root
+
+%define		_prefix	/usr/X11R6
+%define		_mandir /usr/X11R6/man
 
 %description
 LyX is a modern approach of writing documents with a computer which breaks
@@ -23,11 +27,10 @@ look.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
-CXXFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure %{_target_platform} \
-	--prefix=/usr/X11R6 \
+%configure \
 	--with-gnu-gettext \
 	--enable-nls \
 	--without-debug
@@ -36,17 +39,20 @@ make all
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/etc/X11/wmconfig
+install -d $RPM_BUILD_ROOT/etc/X11/applnk/Applications
 
-make install \
-	prefix=$RPM_BUILD_ROOT/usr/X11R6
+make install DESTDIR=$RPM_BUILD_ROOT \
+	localedir=$RPM_BUILD_ROOT%{_datadir}/locale \
+	gnulocaledir=$RPM_BUILD_ROOT%{_datadir}/locale
 
-strip $RPM_BUILD_ROOT/usr/X11R6/bin/lyx
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/applnk/Applications
 
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lyx
-gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/man/man1/*
+rm -f $RPM_BUILD_ROOT%{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 
-rm -f $RPM_BUILD_ROOT/usr/X11R6/share/lyx/{doc/LaTeXConfig.lyx,packages.lst}
+strip $RPM_BUILD_ROOT%{_bindir}/lyx
+
+gzip -9nf ANNOUNCE CHANGES README UPGRADING WHATSNEW \
+	$RPM_BUILD_ROOT%{_mandir}/man1/*
 
 %find_lang %{name}
 
@@ -58,32 +64,32 @@ if [ -f lyxrc.defaults ]; then
 fi
 
 %preun
-rm -f /usr/X11R6/share/lyx/{lyxrc.defaults,lyxrc*}
-rm -f /usr/X11R6/share/lyx/{doc/LaTeXConfig.lyx,packages.lst}
+rm -f %{_datadir}/lyx/{lyxrc.defaults,lyxrc*}
+rm -f %{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc ANNOUNCE APPLIED_PATCHES BUGS CHANGES README TODO
-%config(missingok) /etc/X11/wmconfig/*
-%attr(755,root,root) /usr/X11R6/bin/*
-/usr/X11R6/man/man1/*
-%dir /usr/X11R6/share/lyx
-%attr(755,root,root) /usr/X11R6/share/lyx/configure
-/usr/X11R6/share/lyx/chkconfig.ltx
-/usr/X11R6/share/lyx/CREDITS
-/usr/X11R6/share/lyx/bind
-/usr/X11R6/share/lyx/clipart
-%dir /usr/X11R6/share/lyx/doc
-/usr/X11R6/share/lyx/doc/*.lyx
-/usr/X11R6/share/lyx/doc/LaTeXConfig.lyx.in
-/usr/X11R6/share/lyx/doc/*.eps
-/usr/X11R6/share/lyx/examples
-/usr/X11R6/share/lyx/kbd
-/usr/X11R6/share/lyx/images
-/usr/X11R6/share/lyx/layouts
-/usr/X11R6/share/lyx/reLyX
-/usr/X11R6/share/lyx/templates
-/usr/X11R6/share/lyx/tex
+%doc {ANNOUNCE,CHANGES,README,UPGRADING,WHATSNEW}.gz
+%config(missingok) /etc/X11/applnk/Applications/*
+%attr(755,root,root) %{_bindir}/*
+%dir %{_datadir}/lyx
+%dir %{_datadir}/lyx/doc
+%attr(755,root,root) %{_datadir}/lyx/configure
+%{_datadir}/lyx/chkconfig.ltx
+%{_datadir}/lyx/CREDITS
+%{_datadir}/lyx/bind
+%{_datadir}/lyx/clipart
+%{_datadir}/lyx/doc/*.lyx
+%{_datadir}/lyx/doc/LaTeXConfig.lyx.in
+%{_datadir}/lyx/doc/*.eps
+%{_datadir}/lyx/examples
+%{_datadir}/lyx/kbd
+%{_datadir}/lyx/images
+%{_datadir}/lyx/layouts
+%{_datadir}/lyx/reLyX
+%{_datadir}/lyx/templates
+%{_datadir}/lyx/tex
+%{_mandir}/man1/*
