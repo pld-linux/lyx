@@ -23,6 +23,7 @@ BuildRequires:	qt-devel
 BuildRequires:	aspell-devel
 Prereq:		tetex
 Requires:	gv
+Requires:	python-modules
 Requires:	tetex-fonts
 Requires:	tetex-latex
 Requires:	xdvi
