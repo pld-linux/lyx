@@ -1,0 +1,11 @@
+--- lyx-1.2.0/boost/boost/detail/limits.hpp.orig	Thu Aug 30 00:33:34 2001
++++ lyx-1.2.0/boost/boost/detail/limits.hpp	Thu Sep  5 12:06:24 2002
+@@ -40,7 +40,7 @@
+ 
+ #if defined(__sparc) || defined(__sparc__) || defined(__powerpc__) || defined(__ppc__) || defined(__hppa) || defined(_MIPSEB)
+ #define BOOST_BIG_ENDIAN
+-#elif defined(__i386__)
++#elif defined(__i386__) || defined(__alpha__)
+ #define BOOST_LITTLE_ENDIAN
+ #else
+ #error The file boost/detail/limits.hpp needs to be set up for your CPU type.
