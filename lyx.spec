@@ -1,7 +1,7 @@
 Summary:     A WYSIWYG frontend to LaTeX
 Name:        lyx
 Version:     1.0.0pre2
-Release:     1
+Release:     2
 Source0:     ftp://ftp.via.ecp.fr/pub/lyx/devel/stable/%{name}-%{version}.tar.gz
 Source1:     %{name}.wmconfig
 Serial:      01000002
@@ -25,7 +25,7 @@ look.
 %setup -q
 
 %build
-CXXFLAGS="$RPM_OPT_FLAGS" \
+CXXFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure     --prefix=/usr/X11R6 \
 		--with-gnu-gettext \
 		--enable-nls \
@@ -37,11 +37,13 @@ make all
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/etc/X11/wmconfig
 
-make	install prefix=$RPM_BUILD_ROOT/usr/X11R6
+make install \
+	prefix=$RPM_BUILD_ROOT/usr/X11R6
 
 strip $RPM_BUILD_ROOT/usr/X11R6/bin/lyx
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/lyx
+gzip -9nf $RPM_BUILD_ROOT/usr/X11R6/man/man1/*
 
 rm -f $RPM_BUILD_ROOT/usr/X11R6/share/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 
@@ -95,6 +97,12 @@ rm -rf $RPM_BUILD_ROOT
 %lang(tr) /usr/X11R6/share/locale/tr/LC_MESSAGES/lyx.mo
 
 %changelog
+* Wed Dec  9 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.0.0pre2-2]
+- added gzipping man pages,
+- added LDFLAGS="-s" to ./configure enviroment,
+- recompiled against libstdc++.so.2.9.
+
 * Fri Sep 25 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [0.12.0pre8-1]
 - .mo files moved to /usr/X11R6/share/locale/*/LC_MESSAGES/.
