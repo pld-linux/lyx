@@ -57,7 +57,7 @@ aclocal
 	--without-included-gettext \
 	--without-debug \
 
-make all
+%{__make} all
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -65,7 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/applnk/Applications
 install -d $RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/
 
-make install DESTDIR=$RPM_BUILD_ROOT \
+%{__make} install DESTDIR=$RPM_BUILD_ROOT \
 	     localedir=$RPM_BUILD_ROOT%{_datadir}/locale \
 	     gnulocaledir=$RPM_BUILD_ROOT%{_datadir}/locale
 install %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/applnk/Applications
