@@ -3,13 +3,14 @@ Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.3.0
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
+Patch0:		%{name}-libconfigure.patch
 Icon:		lyx.xpm
 URL:		http://www.lyx.org/
 BuildRequires:  Aiksaurus-devel
@@ -56,6 +57,7 @@ selecionadas pelo editor, não pelo digitador.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 #rm -f acinclude.m4
