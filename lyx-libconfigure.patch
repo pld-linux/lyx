@@ -1,7 +1,7 @@
-diff -urN lyx-1.3.1.org/lib/configure lyx-1.3.1/lib/configure
---- lyx-1.3.1.org/lib/configure	Tue Mar 25 09:22:48 2003
-+++ lyx-1.3.1/lib/configure	Tue Mar 25 09:23:58 2003
-@@ -188,8 +188,8 @@
+diff -ur lyx-1.3.5.org/lib/configure lyx-1.3.5/lib/configure
+--- lyx-1.3.5.org/lib/configure	2004-10-06 16:43:24.000000000 +0200
++++ lyx-1.3.5/lib/configure	2004-10-08 17:21:35.174267343 +0200
+@@ -196,8 +196,8 @@
  
  fi
  
@@ -12,7 +12,7 @@ diff -urN lyx-1.3.1.org/lib/configure lyx-1.3.1/lib/configure
  
  # Search for an installed reLyX or a ready-to-install one
  save_PATH=${PATH}
-@@ -229,7 +229,7 @@
+@@ -237,7 +237,7 @@
  fi
  
  PATH=${save_PATH}
@@ -21,7 +21,7 @@ diff -urN lyx-1.3.1.org/lib/configure lyx-1.3.1/lib/configure
  tex_to_lyx_command=`echo $tex_to_lyx_command | sed "s,reLyX,reLyX$version_suffix,"`
  
  echo $ac_n "checking for a Noweb -> LyX converter""... $ac_c"
-@@ -266,7 +266,7 @@
+@@ -274,7 +274,7 @@
    literate_to_lyx_command=none
  fi
  
@@ -30,7 +30,7 @@ diff -urN lyx-1.3.1.org/lib/configure lyx-1.3.1/lib/configure
  literate_to_lyx_command=`echo $literate_to_lyx_command | sed "s,noweb2lyx,noweb2lyx$version_suffix,"`
  
  # Search something to process a literate document
-@@ -304,7 +304,7 @@
+@@ -312,7 +312,7 @@
    literate_to_tex_command=none
  fi
  
@@ -39,7 +39,7 @@ diff -urN lyx-1.3.1.org/lib/configure lyx-1.3.1/lib/configure
  
  echo $ac_n "checking for a HTML -> Latex converter""... $ac_c"
  echo "$ac_t""(html2latex)"
-@@ -340,7 +340,7 @@
+@@ -348,7 +348,7 @@
    html_to_latex_command=none
  fi
  
@@ -48,7 +48,7 @@ diff -urN lyx-1.3.1.org/lib/configure lyx-1.3.1/lib/configure
  
  echo $ac_n "checking for a MSWord -> Latex converter""... $ac_c"
  echo "$ac_t""(wvCleanLatex word2x)"
-@@ -413,7 +413,7 @@
+@@ -421,7 +421,7 @@
    image_command=none
  fi
  
@@ -57,7 +57,7 @@ diff -urN lyx-1.3.1.org/lib/configure lyx-1.3.1/lib/configure
  
  # Search for a Postscript interpreter
  echo $ac_n "checking for a Postscript interpreter""... $ac_c"
-@@ -632,7 +632,7 @@
+@@ -645,7 +645,7 @@
    ps_to_pdf_command=none
  fi
  
@@ -66,7 +66,7 @@ diff -urN lyx-1.3.1.org/lib/configure lyx-1.3.1/lib/configure
  
  # Search for a program to convert dvi to ps
  echo $ac_n "checking for a DVI to PS converter""... $ac_c"
-@@ -669,7 +669,7 @@
+@@ -682,7 +682,7 @@
    dvi_to_ps_command=none
  fi
  
@@ -75,7 +75,7 @@ diff -urN lyx-1.3.1.org/lib/configure lyx-1.3.1/lib/configure
  
  # Search for a program to convert dvi to pdf
  echo $ac_n "checking for a DVI to PDF converter""... $ac_c"
-@@ -706,7 +706,7 @@
+@@ -719,7 +719,7 @@
    dvi_to_pdf_command=none
  fi
  
@@ -83,8 +83,8 @@ diff -urN lyx-1.3.1.org/lib/configure lyx-1.3.1/lib/configure
 +test "$dvi_to_pdf_command" = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
  
  # We have a script to convert previewlyx to ppm
- lyxpreview_to_bitmap_command="lyxpreview2bitmap.sh"
-@@ -931,7 +931,7 @@
+ lyxpreview_to_bitmap_command="lyxpreview2ppm.py"
+@@ -944,7 +944,7 @@
    fax_command=none
  fi
  
@@ -93,21 +93,3 @@ diff -urN lyx-1.3.1.org/lib/configure lyx-1.3.1/lib/configure
  
  # Search for LinuxDoc support
  echo $ac_n "checking for SGML-tools 1.x (LinuxDoc)""... $ac_c"
-@@ -969,7 +969,7 @@
- fi
- 
- chk_linuxdoc=no
--if test $LINUXDOC != none; then
-+if test "$LINUXDOC" != none; then
-   chk_linuxdoc=yes
-   linuxdoc_cmd="\\def\\haslinuxdoc{yes}"
- fi
-@@ -1023,7 +1023,7 @@
- fi
- 
- chk_docbook=no
--if test $DOCBOOK != none; then
-+if test "$DOCBOOK" != none; then
-   chk_docbook=yes
-   docbook_cmd="\\def\\hasdocbook{yes}"
- fi
