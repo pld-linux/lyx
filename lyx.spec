@@ -102,4 +102,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(-, root,root) %{_datadir}/lyx
 %{_mandir}/man*/*
 %{_applnkdir}/Office/Editors/*
-%{_datadir}/pixmaps/*
+%{_pixmapsdir}/*
