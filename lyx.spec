@@ -23,6 +23,7 @@ BuildRequires:	aiksaurus-devel
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
+BuildRequires:	bzip2-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	qt-devel
 # for xfonts generation
