@@ -1,19 +1,19 @@
 Summary:	A WYSIWYG frontend to LaTeX
 Name:		lyx
-Version:	1.0.3
+Version:	1.0.4
 Release:	1
 Source0:	ftp://ftp.via.ecp.fr/pub/lyx/devel/stable/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Patch:		lyx-DESTDIR.patch
-Serial:		01000003
+Serial:		01000004
 Copyright:	GPL
 Group:		X11/Applications/Publishing
 Requires:	xforms >= 0.88, gv, xdvi, tetex, tetex-latex
 URL:		http://www.lyx.org/
 Buildroot:	/tmp/%{name}-%{version}-root
 
-%define		_prefix	/usr/X11R6
-%define		_mandir /usr/X11R6/man
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 
 %description
 LyX is a modern approach of writing documents with a computer which breaks
@@ -30,6 +30,7 @@ look.
 %patch -p1
 
 %build
+LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--with-gnu-gettext \
 	--enable-nls \
@@ -48,8 +49,6 @@ make install DESTDIR=$RPM_BUILD_ROOT \
 install %{SOURCE1} $RPM_BUILD_ROOT/usr/X11R6/share/applnk/Applications
 
 rm -f $RPM_BUILD_ROOT%{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
-
-strip $RPM_BUILD_ROOT%{_bindir}/lyx
 
 gzip -9nf ANNOUNCE CHANGES README UPGRADING WHATSNEW \
 	$RPM_BUILD_ROOT%{_mandir}/man1/*
