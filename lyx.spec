@@ -3,7 +3,7 @@ Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.2.0
-Release:	3
+Release:	4
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -92,14 +92,14 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Editors,%{_datadir}/pixmaps} \
+install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Wordprocessors,%{_datadir}/pixmaps} \
 	$RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 #	localedir=$RPM_BUILD_ROOT%{_datadir}/locale \
 #	gnulocaledir=$RPM_BUILD_ROOT%{_datadir}/locale
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Office/Editors
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Office/Wordprocessors
 install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
 
 chmod a+rx $RPM_BUILD_ROOT%{_datadir}/lyx/configure
@@ -135,5 +135,5 @@ rm -f %{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 %dir %{_old_datadir}/texmf/tex/latex/lyx
 %attr(-, root,root) %{_datadir}/lyx
 %{_mandir}/man*/*
-%{_applnkdir}/Office/Editors/*
+%{_applnkdir}/Office/Wordprocessors/*
 %{_pixmapsdir}/*
