@@ -63,13 +63,13 @@ rm -f /usr/X11R6/share/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644, root, root, 755)
+%defattr(644,root,root,755)
 %doc ANNOUNCE APPLIED_PATCHES BUGS CHANGES README TODO
 %config(missingok) /etc/X11/wmconfig/*
-%attr(755, root, root) /usr/X11R6/bin/*
+%attr(755,root,root) /usr/X11R6/bin/*
 /usr/X11R6/man/man1/*
 %dir /usr/X11R6/share/lyx
-%attr(755, root, root) /usr/X11R6/share/lyx/configure
+%attr(755,root,root) /usr/X11R6/share/lyx/configure
 /usr/X11R6/share/lyx/chkconfig.ltx
 /usr/X11R6/share/lyx/CREDITS
 /usr/X11R6/share/lyx/bind
@@ -166,7 +166,7 @@ rm -rf $RPM_BUILD_ROOT
 
 * Fri Sep 12 1997 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [0.11.37-1]
-- changed %attr in %doc to (-, root, root).
+- changed %attr in %doc to (-,root,root).
 
 * Sat Sep  6 1997 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [0.11.36-1]
