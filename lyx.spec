@@ -1,8 +1,10 @@
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
+Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.2.0
 Release:	1
+Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
@@ -48,6 +50,15 @@ dokumenty przy jak najmniejszym nak³adzie czasowym bez konieczno¶ci
 bycia specjalist± w sk³adzie tekstów. LyX pozwala autorowi skupiæ siê
 na zawarto¶ci dokumentu podczas gdy komputer zajmie siê ca³± reszt±.
 
+%description -l pt_BR
+Lyx é uma forma moderna de escrever documentos com um computador sem
+que isso quebre os conceitos de uso de uma máquina de escrever
+tradicional. Ele é feito para pessoas que necessitam de um resultado
+profissional com um mínimo de esforço, sem também ser um especialista
+em fontes. Comparado com um editor de textos padrão, LyX é um editor
+de textos que irá aumentar a produtividade visto que as fontes serão
+selecionadas pelo editor, não pelo digitador.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -79,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Editors,%{_datadir}/pixmaps} \
 	$RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT 
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 #	localedir=$RPM_BUILD_ROOT%{_datadir}/locale \
 #	gnulocaledir=$RPM_BUILD_ROOT%{_datadir}/locale
 
