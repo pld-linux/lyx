@@ -62,12 +62,12 @@ selecionadas pelo editor, não pelo digitador.
 
 %build
 #rm -f acinclude.m4
-#%{__aclocal} -I config
-#%{__autoconf}
+#%%{__aclocal} -I config
+#%%{__autoconf}
 #cd lib/reLyX
-#%{__autoconf}
+#%%{__autoconf}
 #cd ../..
-#%{__automake}
+#%%{__automake}
 CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %configure \
 	--enable-nls \
