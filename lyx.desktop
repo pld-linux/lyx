@@ -1,8 +1,9 @@
 [Desktop Entry]
 Name=LyX
 Comment=A WYSIWYG frontend to LaTeX
-Comment[pl]=WYSIWYG nak≥adka na LaTeXa
+Comment[pl]=WYSIWYG nak≈Çadka na LaTeXa
 Icon=lyx.png
 Exec=lyx
 Terminal=0
 Type=Applications/Editors
+# vi: encoding=utf-8
