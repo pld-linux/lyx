@@ -68,6 +68,8 @@ install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Editors,%{_datadir}/pixmaps} \
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Office/Editors
 install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
 
+chmod a+rx $RPM_BUILD_ROOT%{_datadir}/lyx/configure
+
 rm -f $RPM_BUILD_ROOT%{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 ln -s %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/lyx
 
@@ -79,7 +81,7 @@ gzip -9nf ANNOUNCE README NEWS
 umask 022
 %{_old_bindir}/texhash
 cd %{_datadir}/lyx/
-./configure > /dev/null
+./configure > /dev/null || :
 if [ -f lyxrc.defaults ]; then
 	cp -p lyxrc.defaults lyxrc
 fi
