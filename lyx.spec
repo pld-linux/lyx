@@ -15,9 +15,9 @@ Prereq:		tetex
 Requires:	gv
 Requires:	xdvi
 Requires:	tetex-latex
-#BuildRequires:	xforms-devel >= 0.88
-BuildRequires:	gtkmm-devel >= 1.2.1
-BuildRequires:	gnomemm-devel
+BuildRequires:	xforms-devel >= 0.88
+#BuildRequires:	gtkmm-devel >= 1.2.1
+#BuildRequires:	gnomemm-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	libstdc++-devel
 URL:		http://www.lyx.org/
@@ -64,10 +64,11 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 %configure \
 	--enable-nls \
 	--without-included-gettext \
+	--disable-gtktest \
 	%{?!debug:--without-debug} \
-	--with-frontend=gnome \
-	--with-gnome \
-	--with-gnomemm-config-path=/usr/X11R6/lib
+	--with-frontend=xforms
+#	--with-gnome \
+#	--with-gnomemm-config-path=/usr/X11R6/lib
 
 %{__make} all
 
