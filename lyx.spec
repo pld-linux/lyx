@@ -75,7 +75,7 @@ CXXFLAGS="%{rpmcflags} -fno-exceptions"
 	--with-frontend=qt \
 	--with-pspell \
 	--with-qt-includes=%{_includedir}/qt
-	
+
 
 %{__make} all
 
