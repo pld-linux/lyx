@@ -2,7 +2,7 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.2.3
+Version:	1.3.0
 Release:	1
 Epoch:		1
 License:	GPL
@@ -10,27 +10,22 @@ Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Patch0:		%{name}-am_fix.patch
-Patch1:		%{name}-ac_fix.patch
 Icon:		lyx.xpm
 URL:		http://www.lyx.org/
+BuildRequires:  Aiksaurus-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-#BuildRequires:	gnomemm-devel
-#BuildRequires:	gtkmm-devel >= 1.2.1
 BuildRequires:	libstdc++-devel
 BuildRequires:	tetex-fonts
-BuildRequires:	xforms-devel >= 0.88
+BuildRequires:	qt-devel
+BuildRequires:	aspell-devel
 Prereq:		tetex
 Requires:	gv
 Requires:	tetex-fonts
 Requires:	tetex-latex
 Requires:	xdvi
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_old_bindir	/usr/bin
-%define		_old_datadir	/usr/share
 
 %description
 LyX is a modern approach of writing documents with a computer which
@@ -61,39 +56,33 @@ selecionadas pelo editor, não pelo digitador.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p0
 
 %build
-rm -f acinclude.m4
-%{__aclocal} -I config
-%{__autoconf}
-cd sigc++
-%{__autoconf}
-cd ../lib/reLyX
-%{__autoconf}
-cd ../..
-%{__automake}
-CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
+#rm -f acinclude.m4
+#%{__aclocal} -I config
+#%{__autoconf}
+#cd lib/reLyX
+#%{__autoconf}
+#cd ../..
+#%{__automake}
+CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %configure \
 	--enable-nls \
 	--without-included-gettext \
-	--disable-gtktest \
 	%{?!debug:--without-debug} \
-	--with-frontend=xforms
-#	--with-gnome \
-#	--with-gnomemm-config-path=/usr/X11R6/lib
+	--with-frontend=qt \
+	--with-pspell \
+	--with-qt-includes=%{_includedir}/qt
+	
 
 %{__make} all
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Wordprocessors,%{_pixmapsdir}} \
-	$RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/
+	$RPM_BUILD_ROOT%{_datadir}/texmf/tex/latex/
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
-#	localedir=$RPM_BUILD_ROOT%{_datadir}/locale \
-#	gnulocaledir=$RPM_BUILD_ROOT%{_datadir}/locale
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Office/Wordprocessors
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
@@ -101,7 +90,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 chmod a+rx $RPM_BUILD_ROOT%{_datadir}/lyx/configure
 
 rm -f $RPM_BUILD_ROOT%{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
-ln -sf %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/lyx
+ln -sf %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{_datadir}/texmf/tex/latex/lyx
 
 %find_lang %{name}
 
@@ -110,7 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 umask 022
-%{_old_bindir}/texhash
+%{_bindir}/texhash
 cd %{_datadir}/lyx/
 ./configure > /dev/null || :
 if [ -f lyxrc.defaults ]; then
@@ -118,7 +107,7 @@ if [ -f lyxrc.defaults ]; then
 fi
 
 %postun
-%{_old_bindir}/texhash
+%{_bindir}/texhash
 
 %preun
 rm -f %{_datadir}/lyx/{lyxrc.defaults,lyxrc*}
@@ -128,7 +117,7 @@ rm -f %{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 %defattr(644,root,root,755)
 %doc ANNOUNCE README NEWS
 %attr(755,root,root) %{_bindir}/*
-%dir %{_old_datadir}/texmf/tex/latex/lyx
+%dir %{_datadir}/texmf/tex/latex/lyx
 %attr(-, root,root) %{_datadir}/lyx
 %{_mandir}/man*/*
 %{_applnkdir}/Office/Wordprocessors/*
