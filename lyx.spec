@@ -1,7 +1,7 @@
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Name:		lyx
-Version:	1.1.5
+Version:	1.1.6
 Release:	1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -102,6 +102,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %dir %{_old_datadir}/texmf/tex/latex/lyx
 %attr(-, root,root) %{_datadir}/lyx
-%{_mandir}/man1/*
+%{_mandir}/man*/*
 %{_applnkdir}/Office/Editors/*
 %{_datadir}/pixmaps/*
