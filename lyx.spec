@@ -175,7 +175,7 @@ rm -rf $RPM_BUILD_ROOT
 
 * Wed Aug 6 1997 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
 - added %attr macros in %files (allow build package from non root account),
-- added striping latex2lyx.
+- added stripping latex2lyx.
 
 * Tue Jun 1 1997 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [0.11.29.1-1]
