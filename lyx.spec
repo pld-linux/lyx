@@ -108,7 +108,7 @@ rm -rf $RPM_BUILD_ROOT
   <minor_ver> + 10^6 + <rev> * 10^4 + <pre> * 10^2 Current for 0.12.1pre5 is
   00120105. <pre> = 99 is reserved for finan version. Serial number is added
   because strigs from following LyX versions not always fulfils rules
-  "current.version" > "previouse.version" witch disallow slight upgrade
+  "current.version" > "previouse.version" which disallow slight upgrade
   using LyX version,
 - modified file list in %files in /usr/X11R6/share/lyx/doc/ and added
   /usr/X11R6/share/lyx/reLyX files.
