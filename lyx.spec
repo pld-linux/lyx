@@ -48,7 +48,7 @@ na zawarto¶ci dokumentu podczas gdy komputer zajmie siê ca³± reszt±.
 %setup -q
 
 %build
-CXXFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS} -fno-rtti -fno-exceptions"
+CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 %configure \
 	--enable-nls \
 	--without-included-gettext \
@@ -71,7 +71,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
 chmod a+rx $RPM_BUILD_ROOT%{_datadir}/lyx/configure
 
 rm -f $RPM_BUILD_ROOT%{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
-ln -s %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/lyx
+ln -sf %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/lyx
 
 gzip -9nf ANNOUNCE README NEWS
 
