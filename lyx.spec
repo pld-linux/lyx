@@ -2,19 +2,19 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.3.4
-Release:	4.2
+Version:	1.3.5
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	13fe7a7bcec0430e9a9436f2e3cfa04e
+# Source0-md5:	f4c70d2565ba9c974b1f94fc1dfd63bf
+# Source0-size:	5459049
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 # it's patch from BRANCH_1_3_X
-Patch0:		%{name}-cvs-20040923.patch
-Patch1:		%{name}-libconfigure.patch
-Patch2:		%{name}-locale_names.patch
+Patch0:		%{name}-libconfigure.patch
+Patch1:		%{name}-locale_names.patch
 Icon:		lyx.xpm
 URL:		http://www.lyx.org/
 BuildRequires:	XFree86-devel
@@ -64,7 +64,6 @@ selecionadas pelo editor, não pelo digitador.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 mv po/{no,nb}.po
 
