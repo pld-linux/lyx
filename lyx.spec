@@ -3,7 +3,7 @@ Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.3.4
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -12,6 +12,7 @@ Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-libconfigure.patch
+Patch1:		%{name}-locale_names.patch
 Icon:		lyx.xpm
 URL:		http://www.lyx.org/
 BuildRequires:	XFree86-devel
@@ -60,6 +61,9 @@ selecionadas pelo editor, não pelo digitador.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+
+mv po/{no,nb}.po
 
 # should be config/qt.m4, but ac/am is not regenerated
 %{__perl} -pi -e 's/-lqt3 -lqt2 -lqt -lqt-mt/-lqt-mt/' configure
