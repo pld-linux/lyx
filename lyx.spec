@@ -1,7 +1,7 @@
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Name:		lyx
-Version:	1.2.0pre4
+Version:	1.2.0pre5
 Release:	1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -77,9 +77,9 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Editors,%{_datadir}/pixmaps} \
 	$RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT \
-	localedir=$RPM_BUILD_ROOT%{_datadir}/locale \
-	gnulocaledir=$RPM_BUILD_ROOT%{_datadir}/locale
+%{__make} install DESTDIR=$RPM_BUILD_ROOT 
+#	localedir=$RPM_BUILD_ROOT%{_datadir}/locale \
+#	gnulocaledir=$RPM_BUILD_ROOT%{_datadir}/locale
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Office/Editors
 install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
