@@ -11,9 +11,9 @@ Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Icon:		lyx.xpm
+Prereq:		tetex
 Requires:	gv
 Requires:	xdvi
-Requires:	tetex
 Requires:	tetex-latex
 BuildRequires:	xforms-devel >= 0.88
 BuildRequires:	XFree86-devel
