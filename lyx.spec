@@ -52,7 +52,8 @@ CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
 %configure2_13 \
 	--enable-nls \
 	--without-included-gettext \
-	--without-debug \
+	%{?!debug:--without-debug} \
+	--with-gnome
 
 %{__make} all
 
