@@ -8,6 +8,7 @@ Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
+Patch0:		%{name}-am_fix.patch
 Icon:		lyx.xpm
 Prereq:		tetex
 Requires:	gv
@@ -46,10 +47,14 @@ na zawarto¶ci dokumentu podczas gdy komputer zajmie siê ca³± reszt±.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+aclocal
+autoconf
+automake -a -c -f
 CXXFLAGS="%{rpmcflags} -fno-rtti -fno-exceptions"
-%configure2_13 \
+%configure \
 	--enable-nls \
 	--without-included-gettext \
 	%{?!debug:--without-debug} \
