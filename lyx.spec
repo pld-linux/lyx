@@ -1,14 +1,15 @@
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Name:		lyx
-Version:	1.1.4
+Version:	1.1.4fix3
 Release:	1
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Patch0:		ftp://ftp.lyx.org/pub/lyx/devel/stable/patch-1.1.4fix1.gz
 Patch1:		ftp://ftp.lyx.org/pub/lyx/devel/stable/patch-1.1.4fix2.gz
-Patch2:		lyx-pl.patch
-Patch3:		lyx-DESTDIR.patch
+Patch2:		ftp://ftp.lyx.org/pub/lyx/devel/stable/patch-1.1.4fix3.gz
+Patch3:		lyx-pl.patch
+Patch4:		lyx-DESTDIR.patch
 License:	GPL
 Group:		Applications/Publishing/TeX
 Group(pl):	Aplikacje/Publikowanie/TeX
@@ -52,6 +53,7 @@ podczas gdy komputer zajmie siê ca³± reszt±.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 LDFLAGS="-s"; export LDFLAGS
