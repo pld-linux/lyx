@@ -21,7 +21,7 @@ BuildRequires:	xforms-devel >= 0.88
 BuildRequires:	XFree86-libs-devel
 BuildRequires:	libstdc++-devel
 URL:		http://www.lyx.org/
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_old_bindir	/usr/bin
 %define		_old_datadir	/usr/share
