@@ -148,6 +148,7 @@ umask 022
 %lang(hu) %{_datadir}/lyx/doc/hu_*
 %lang(it) %{_datadir}/lyx/doc/it_*
 %lang(nl) %{_datadir}/lyx/doc/nl_*
+%lang(nb) %{_datadir}/lyx/doc/no_*
 %lang(pl) %{_datadir}/lyx/doc/pl_*
 %lang(pt) %{_datadir}/lyx/doc/pt_*
 %lang(ro) %{_datadir}/lyx/doc/ro_*
