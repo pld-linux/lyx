@@ -5,10 +5,11 @@ Version:	1.1.6
 Release:	1
 License:	GPL
 Group:		Applications/Publishing/TeX
+Group(de):	Applikationen/Publizieren/TeX
 Group(pl):	Aplikacje/Publikowanie/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
-Source2:	lyx.png
+Source2:	%{name}.png
 Icon:		lyx.xpm
 Requires:	gv
 Requires:	xdvi
@@ -47,9 +48,7 @@ na zawarto¶ci dokumentu podczas gdy komputer zajmie siê ca³± reszt±.
 %setup -q
 
 %build
-CXXFLAGS="$RPM_OPT_FLAGS -fno-rtti -fno-exceptions"
-LDFLAGS="-s"
-export CXXFLAGS LDFLAGS
+CXXFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS} -fno-rtti -fno-exceptions"
 %configure \
 	--enable-nls \
 	--without-included-gettext \
@@ -59,7 +58,6 @@ export CXXFLAGS LDFLAGS
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT{%{_applnkdir}/Office/Editors,%{_datadir}/pixmaps} \
 	$RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/
 
@@ -73,7 +71,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
 rm -f $RPM_BUILD_ROOT%{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 ln -s %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{_old_datadir}/texmf/tex/latex/lyx
 
-gzip -9nf ANNOUNCE README NEWS $RPM_BUILD_ROOT%{_mandir}/man1/*
+gzip -9nf ANNOUNCE README NEWS
 
 %find_lang %{name}
 
