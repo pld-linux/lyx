@@ -2,8 +2,8 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.3.0
-Release:	2
+Version:	1.3.1
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -18,13 +18,11 @@ BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
-BuildRequires:	tetex-fonts
 BuildRequires:	qt-devel
 BuildRequires:	aspell-devel
 Prereq:		tetex
 Requires:	gv
 Requires:	python-modules
-Requires:	tetex-fonts
 Requires:	tetex-latex
 Requires:	xdvi
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
