@@ -4,8 +4,8 @@
  
  # The list of languages known to LyX (actually we only include the languages 
  # that are complete enough to be useful). This is needed by GNU gettext
--ALL_LINGUAS="da de es eu fi fr it nl nn no pl ro ru sk sl"
-+ALL_LINGUAS="da de es eu fi fr it nb nl nn pl ro ru sk sl"
+-ALL_LINGUAS="da de es eu fi fr it nl nn no pl ro ru sk sl tr"
++ALL_LINGUAS="da de es eu fi fr it nb nl nn pl ro ru sk sl tr"
  
  # fix the value of the prefixes.
  test "x$prefix" = xNONE && prefix=$ac_default_prefix
@@ -15,8 +15,8 @@
  
  # The list of languages known to LyX (actually we only include the languages
  # that are complete enough to be useful). This is needed by GNU gettext
--ALL_LINGUAS="da de es eu fi fr it nl nn no pl ro ru sk sl"
-+ALL_LINGUAS="da de es eu fi fr it nb nl nn pl ro ru sk sl"
+-ALL_LINGUAS="da de es eu fi fr it nl nn no pl ro ru sk sl tr"
++ALL_LINGUAS="da de es eu fi fr it nb nl nn pl ro ru sk sl tr"
  
  # fix the value of the prefixes.
  test "x$prefix" = xNONE && prefix=$ac_default_prefix
@@ -26,8 +26,8 @@
  
  # The list of languages known to LyX (actually we only include the languages 
  # that are complete enough to be useful). This is needed by GNU gettext
--ALL_LINGUAS="da de es eu fi fr it nl nn no pl ro ru sk sl"
-+ALL_LINGUAS="da de es eu fi fr it nb nl nn pl ro ru sk sl"
+-ALL_LINGUAS="da de es eu fi fr it nl nn no pl ro ru sk sl tr"
++ALL_LINGUAS="da de es eu fi fr it nb nl nn pl ro ru sk sl tr"
  
  # fix the value of the prefixes.
  test "x$prefix" = xNONE && prefix=$ac_default_prefix
@@ -37,8 +37,8 @@
  
  # The list of languages known to LyX (actually we only include the languages 
  # that are complete enough to be useful). This is needed by GNU gettext
--ALL_LINGUAS="da de es eu fi fr it nl nn no pl ro ru sk sl"
-+ALL_LINGUAS="da de es eu fi fr it nb nl nn pl ro ru sk sl"
+-ALL_LINGUAS="da de es eu fi fr it nl nn no pl ro ru sk sl tr"
++ALL_LINGUAS="da de es eu fi fr it nb nl nn pl ro ru sk sl tr"
  
  # fix the value of the prefixes.
  test "x$prefix" = xNONE && prefix=$ac_default_prefix
