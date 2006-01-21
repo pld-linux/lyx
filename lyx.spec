@@ -14,7 +14,6 @@ Source2:	%{name}.png
 # it's patch from BRANCH_1_3_X
 Patch0:		%{name}-libconfigure.patch
 Patch1:		%{name}-locale_names.patch
-Icon:		lyx.xpm
 URL:		http://www.lyx.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	aiksaurus-devel
