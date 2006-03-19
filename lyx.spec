@@ -2,18 +2,17 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.3.7
+Version:	1.4.0
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	cef9a2fca128c32ffa04c214d02cde04
+# Source0-md5:	5ab37471339ff7dbc8f0c43282746cb0
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 # it's patch from BRANCH_1_3_X
 Patch0:		%{name}-libconfigure.patch
-Patch1:		%{name}-locale_names.patch
 URL:		http://www.lyx.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	aiksaurus-devel
@@ -66,11 +65,8 @@ selecionadas pelo editor, não pelo digitador.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
-mv po/{no,nb}.po
-
-%{__perl} -pi -e 's/-lqt3 -lqt2 -lqt -lqt-mt/-lqt-mt/' config/qt.m4
+%{__perl} -pi -e 's/-lqt-mt -lqt-mt3 -lqt3 -lqt2 -lqt/-lqt-mt/' config/qt.m4
 
 %build
 ./autogen.sh
@@ -149,8 +145,8 @@ umask 022
 %lang(he) %{_datadir}/lyx/doc/he_*
 %lang(hu) %{_datadir}/lyx/doc/hu_*
 %lang(it) %{_datadir}/lyx/doc/it_*
+%lang(nb) %{_datadir}/lyx/doc/nb_*
 %lang(nl) %{_datadir}/lyx/doc/nl_*
-%lang(nb) %{_datadir}/lyx/doc/no_*
 %lang(pl) %{_datadir}/lyx/doc/pl_*
 %lang(pt) %{_datadir}/lyx/doc/pt_*
 %lang(ro) %{_datadir}/lyx/doc/ro_*
@@ -161,21 +157,19 @@ umask 022
 %{_datadir}/lyx/encodings
 %{_datadir}/lyx/examples
 %{_datadir}/lyx/external_templates
-%{_datadir}/lyx/help
 %{_datadir}/lyx/images
 %{_datadir}/lyx/kbd
 %{_datadir}/lyx/languages
 %{_datadir}/lyx/layouts
 %attr(755,root,root) %{_datadir}/lyx/lyx2lyx
 %{_datadir}/lyx/lyxrc.*
-%{_datadir}/lyx/reLyX
 %attr(755,root,root) %{_datadir}/lyx/scripts
 %{_datadir}/lyx/symbols
+%{_datadir}/lyx/syntax.default
 %{_datadir}/lyx/templates
 %{_datadir}/lyx/tex
 %{_datadir}/lyx/textclass.lst
 %{_datadir}/lyx/ui
-%{_datadir}/lyx/xfonts
 %{_mandir}/man*/*
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
