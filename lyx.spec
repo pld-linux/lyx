@@ -21,6 +21,7 @@ BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	libstdc++-devel
+BuildRequires:  rpm-pythonprov
 BuildRequires:	qt-devel
 # for xfonts generation
 BuildRequires:	kpathsea
