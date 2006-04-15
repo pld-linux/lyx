@@ -21,13 +21,13 @@ BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:  rpm-pythonprov
 BuildRequires:	qt-devel
+BuildRequires:	rpm-pythonprov
 # for xfonts generation
 BuildRequires:	kpathsea
 BuildRequires:	tetex-fonts-type1-bluesky
 BuildRequires:	tetex-fonts-type1-hoekwater
-PreReq:		tetex
+Requires(post,postun):	tetex
 Requires:	gv
 Requires:	python-modules
 Requires:	tetex-latex
@@ -76,7 +76,7 @@ CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %configure \
 	--enable-nls \
 	--without-included-gettext \
-	%{?!debug:--without-debug} \
+	%{!?debug:--without-debug} \
 	--with-frontend=qt \
 	--with-qt-includes=%{_includedir}/qt \
 	--with-pspell 
