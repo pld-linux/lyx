@@ -2,17 +2,15 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.4.1
+Version:	1.4.2
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	368696695a05e428773626e3b0f8ae74
+# Source0-md5:	e828dbb01e3a05b1ae9dfb28884463e2
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-# it's patch from BRANCH_1_3_X
-Patch0:		%{name}-libconfigure.patch
 URL:		http://www.lyx.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	aiksaurus-devel
@@ -25,6 +23,7 @@ BuildRequires:	qt-devel
 BuildRequires:	rpm-pythonprov
 # for xfonts generation
 BuildRequires:	kpathsea
+BuildRequires:	sed >= 4.0
 BuildRequires:	tetex-fonts-type1-bluesky
 BuildRequires:	tetex-fonts-type1-hoekwater
 Requires(post,postun):	tetex
@@ -65,7 +64,6 @@ selecionadas pelo editor, não pelo digitador.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %{__perl} -pi -e 's/-lqt-mt -lqt-mt3 -lqt3 -lqt2 -lqt/-lqt-mt/' config/qt.m4
 
@@ -94,10 +92,10 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}} \
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
-chmod a+rx $RPM_BUILD_ROOT%{_datadir}/lyx/configure
-
 rm -f $RPM_BUILD_ROOT%{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 ln -sf %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{texmfdir}/tex/latex/lyx
+
+sed -i -e 's,#! /usr/bin/env python,#!/usr/bin/python,' $RPM_BUILD_ROOT%{_datadir}/lyx/configure.py
 
 %find_lang %{name}
 
@@ -108,7 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 umask 022
 /usr/bin/texhash
 cd %{_datadir}/lyx
-./configure > /dev/null || :
+./configure.py > /dev/null || :
 if [ -f lyxrc.defaults ]; then
 	cp -p lyxrc.defaults lyxrc
 fi
@@ -169,7 +167,6 @@ umask 022
 %{_datadir}/lyx/syntax.default
 %{_datadir}/lyx/templates
 %{_datadir}/lyx/tex
-%{_datadir}/lyx/textclass.lst
 %{_datadir}/lyx/ui
 %{_mandir}/man*/*
 %{_desktopdir}/*.desktop
