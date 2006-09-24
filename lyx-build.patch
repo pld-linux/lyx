@@ -1,0 +1,12 @@
+diff -urN lyx-1.4.2.org/autogen.sh lyx-1.4.2/autogen.sh
+--- lyx-1.4.2.org/autogen.sh	2006-05-12 17:57:41.000000000 +0200
++++ lyx-1.4.2/autogen.sh	2006-09-24 11:50:42.175950250 +0200
+@@ -38,7 +38,7 @@
+ }
+ 	    
+ case $autoversion in
+-    *' '2.5[2-9])
++    *' '2.5[2-9]|*' '2.6[0-9])
+ 	EXTRA_ACINCLUDE_FILES="lyxinclude25x.m4"
+ 	;;
+     *)
