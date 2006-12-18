@@ -13,10 +13,9 @@ Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-build.patch
 URL:		http://www.lyx.org/
-BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	aiksaurus-devel
 BuildRequires:	aspell-devel
-BuildRequires:	autoconf >= 2.52
+BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	libstdc++-devel
@@ -27,6 +26,7 @@ BuildRequires:	kpathsea
 BuildRequires:	sed >= 4.0
 BuildRequires:	tetex-fonts-type1-bluesky
 BuildRequires:	tetex-fonts-type1-hoekwater
+BuildRequires:	xorg-lib-libX11-devel
 Requires(post,postun):	tetex
 Requires:	gv
 Requires:	python-modules
@@ -69,8 +69,11 @@ selecionadas pelo editor, não pelo digitador.
 %{__perl} -pi -e 's/-lqt-mt -lqt-mt3 -lqt3 -lqt2 -lqt/-lqt-mt/' config/qt.m4
 
 %build
-./autogen.sh
-cp -f /usr/share/automake/config.* config
+cat config/{lyxinclude.m4,libtool.m4,xforms.m4,qt.m4,gtk--.m4,gnome--.m4,gnome.m4,spell.m4,lyxinclude25x.m4} > acinclude.m4
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %configure \
 	--enable-nls \
