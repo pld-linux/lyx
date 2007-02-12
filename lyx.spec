@@ -1,6 +1,6 @@
 Summary:	A WYSIWYM frontend to LaTeX
-Summary(pl):	Nak³adka WYSIWYM na LaTeXa
-Summary(pt_BR):	Editor de Textos para ambiente Desktop
+Summary(pl.UTF-8):   NakÅ‚adka WYSIWYM na LaTeXa
+Summary(pt_BR.UTF-8):   Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.4.3
 Release:	1
@@ -46,22 +46,22 @@ most of the typesetting will be done by the computer, not the author.
 With LyX the author can concentrate on the contents of his writing,
 since the computer will take care of the look.
 
-%description -l pl
-LyX jest nowoczesnym narzêdziem s³u¿±cym do pisania dokumentów
-³ami±cym dotychczasow±, przestarza³± tradycjê maszyny do pisania. LyX
-zosta³ zaprojektowany dla ludzi, którzy chc± tworzyæ profesjonalne
-dokumenty przy jak najmniejszym nak³adzie czasowym bez konieczno¶ci
-bycia specjalist± w sk³adzie tekstów. LyX pozwala autorowi skupiæ siê
-na zawarto¶ci dokumentu podczas gdy komputer zajmie siê ca³± reszt±.
+%description -l pl.UTF-8
+LyX jest nowoczesnym narzÄ™dziem sÅ‚uÅ¼Ä…cym do pisania dokumentÃ³w
+Å‚amiÄ…cym dotychczasowÄ…, przestarzaÅ‚Ä… tradycjÄ™ maszyny do pisania. LyX
+zostaÅ‚ zaprojektowany dla ludzi, ktÃ³rzy chcÄ… tworzyÄ‡ profesjonalne
+dokumenty przy jak najmniejszym nakÅ‚adzie czasowym bez koniecznoÅ›ci
+bycia specjalistÄ… w skÅ‚adzie tekstÃ³w. LyX pozwala autorowi skupiÄ‡ siÄ™
+na zawartoÅ›ci dokumentu podczas gdy komputer zajmie siÄ™ caÅ‚Ä… resztÄ….
 
-%description -l pt_BR
-Lyx é uma forma moderna de escrever documentos com um computador sem
-que isso quebre os conceitos de uso de uma máquina de escrever
-tradicional. Ele é feito para pessoas que necessitam de um resultado
-profissional com um mínimo de esforço, sem também ser um especialista
-em fontes. Comparado com um editor de textos padrão, LyX é um editor
-de textos que irá aumentar a produtividade visto que as fontes serão
-selecionadas pelo editor, não pelo digitador.
+%description -l pt_BR.UTF-8
+Lyx Ã© uma forma moderna de escrever documentos com um computador sem
+que isso quebre os conceitos de uso de uma mÃ¡quina de escrever
+tradicional. Ele Ã© feito para pessoas que necessitam de um resultado
+profissional com um mÃ­nimo de esforÃ§o, sem tambÃ©m ser um especialista
+em fontes. Comparado com um editor de textos padrÃ£o, LyX Ã© um editor
+de textos que irÃ¡ aumentar a produtividade visto que as fontes serÃ£o
+selecionadas pelo editor, nÃ£o pelo digitador.
 
 %prep
 %setup -q
