@@ -1,6 +1,6 @@
 Summary:	A WYSIWYM frontend to LaTeX
-Summary(pl.UTF-8):   Nakładka WYSIWYM na LaTeXa
-Summary(pt_BR.UTF-8):   Editor de Textos para ambiente Desktop
+Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
+Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.4.3
 Release:	1
