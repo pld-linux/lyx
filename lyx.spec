@@ -2,16 +2,15 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.4.3
+Version:	1.4.4
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	34a014a0034481381cbba517d4a00e61
+# Source0-md5:	2e778eba4191c5f9fb2cafa7901c322c
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Patch0:		%{name}-build.patch
 URL:		http://www.lyx.org/
 BuildRequires:	aiksaurus-devel
 BuildRequires:	aspell-devel
@@ -65,7 +64,6 @@ selecionadas pelo editor, não pelo digitador.
 
 %prep
 %setup -q
-%patch0 -p1
 %{__perl} -pi -e 's/-lqt-mt -lqt-mt3 -lqt3 -lqt2 -lqt/-lqt-mt/' config/qt.m4
 
 %build
