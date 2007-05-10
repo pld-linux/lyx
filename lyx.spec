@@ -2,18 +2,15 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl):	Nak³adka WYSIWYM na LaTeXa
 Summary(pt_BR):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.3.6
+Version:	1.4.4
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	26d745b98bdc32e9edfc28e581583f80
+# Source0-md5:	2e778eba4191c5f9fb2cafa7901c322c
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-# it's patch from BRANCH_1_3_X
-Patch0:		%{name}-libconfigure.patch
-Patch1:		%{name}-locale_names.patch
 Icon:		lyx.xpm
 URL:		http://www.lyx.org/
 BuildRequires:	XFree86-devel
@@ -66,16 +63,14 @@ selecionadas pelo editor, não pelo digitador.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-
-mv po/{no,nb}.po
-
-%{__perl} -pi -e 's/-lqt3 -lqt2 -lqt -lqt-mt/-lqt-mt/' config/qt.m4
+%{__perl} -pi -e 's/-lqt-mt -lqt-mt3 -lqt3 -lqt2 -lqt/-lqt-mt/' config/qt.m4
 
 %build
-./autogen.sh
-cp -f /usr/share/automake/config.* config
+cat config/{lyxinclude.m4,libtool.m4,xforms.m4,qt.m4,gtk--.m4,gnome--.m4,gnome.m4,spell.m4,lyxinclude25x.m4} > acinclude.m4
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %configure \
 	--enable-nls \
@@ -98,10 +93,10 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}} \
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
-chmod a+rx $RPM_BUILD_ROOT%{_datadir}/lyx/configure
-
 rm -f $RPM_BUILD_ROOT%{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 ln -sf %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{texmfdir}/tex/latex/lyx
+
+sed -i -e 's,#! /usr/bin/env python,#!/usr/bin/python,' $RPM_BUILD_ROOT%{_datadir}/lyx/configure.py
 
 %find_lang %{name}
 
@@ -112,7 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 umask 022
 /usr/bin/texhash
 cd %{_datadir}/lyx
-./configure > /dev/null || :
+./configure.py > /dev/null || :
 if [ -f lyxrc.defaults ]; then
 	cp -p lyxrc.defaults lyxrc
 fi
@@ -150,8 +145,8 @@ umask 022
 %lang(he) %{_datadir}/lyx/doc/he_*
 %lang(hu) %{_datadir}/lyx/doc/hu_*
 %lang(it) %{_datadir}/lyx/doc/it_*
+%lang(nb) %{_datadir}/lyx/doc/nb_*
 %lang(nl) %{_datadir}/lyx/doc/nl_*
-%lang(nb) %{_datadir}/lyx/doc/no_*
 %lang(pl) %{_datadir}/lyx/doc/pl_*
 %lang(pt) %{_datadir}/lyx/doc/pt_*
 %lang(ro) %{_datadir}/lyx/doc/ro_*
@@ -162,21 +157,18 @@ umask 022
 %{_datadir}/lyx/encodings
 %{_datadir}/lyx/examples
 %{_datadir}/lyx/external_templates
-%{_datadir}/lyx/help
 %{_datadir}/lyx/images
 %{_datadir}/lyx/kbd
 %{_datadir}/lyx/languages
 %{_datadir}/lyx/layouts
 %attr(755,root,root) %{_datadir}/lyx/lyx2lyx
 %{_datadir}/lyx/lyxrc.*
-%{_datadir}/lyx/reLyX
 %attr(755,root,root) %{_datadir}/lyx/scripts
 %{_datadir}/lyx/symbols
+%{_datadir}/lyx/syntax.default
 %{_datadir}/lyx/templates
 %{_datadir}/lyx/tex
-%{_datadir}/lyx/textclass.lst
 %{_datadir}/lyx/ui
-%{_datadir}/lyx/xfonts
 %{_mandir}/man*/*
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
