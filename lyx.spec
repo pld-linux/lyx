@@ -2,23 +2,27 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.4.5.1
+Version:	1.5.1
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	b74d82e80c49c7edb782ec7395b7ca27
+# Source0-md5:	0ae3b9ccb2aa74776be4af8c199dbbe9
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://www.lyx.org/
 BuildRequires:	aiksaurus-devel
+BuildRequires:	boost-array-devel
+BuildRequires:	boost-crc-devel
+BuildRequires:	boost-filesystem-devel
+BuildRequires:	boost-regex-devel
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:	qt-devel
+BuildRequires:	QtGui-devel
 BuildRequires:	rpm-pythonprov
 # for xfonts generation
 BuildRequires:	kpathsea
@@ -67,17 +71,19 @@ selecionadas pelo editor, não pelo digitador.
 %{__perl} -pi -e 's/-lqt-mt -lqt-mt3 -lqt3 -lqt2 -lqt/-lqt-mt/' config/qt.m4
 
 %build
-cat config/{lyxinclude.m4,libtool.m4,xforms.m4,qt.m4,gtk--.m4,gnome--.m4,gnome.m4,spell.m4,lyxinclude25x.m4} > acinclude.m4
+cat config/*.m4 > acinclude.m4
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %configure \
+	--with-qt4-dir=%{_libdir}/qt4 \
 	--enable-nls \
 	--without-included-gettext \
+	--without-included-boost \
 	%{!?debug:--without-debug} \
-	--with-frontend=qt \
+	--with-frontend=qt4 \
 	--with-qt-includes=%{_includedir}/qt \
 	--with-pspell 
 
