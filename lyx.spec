@@ -76,7 +76,7 @@ cat config/*.m4 > acinclude.m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-CXXFLAGS="%{rpmcflags} -fno-exceptions"
+#CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %configure \
 	--with-qt4-dir=%{_libdir}/qt4 \
 	--enable-nls \
