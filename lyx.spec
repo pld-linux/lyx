@@ -139,7 +139,6 @@ umask 022
 %{_datadir}/lyx/bind
 %{_datadir}/lyx/chkconfig.ltx
 %{_datadir}/lyx/doc/clipart
-%{_datadir}/lyx/doc/gl
 %attr(755,root,root) %{_datadir}/lyx/configure*
 %dir %{_datadir}/lyx/doc
 %{_datadir}/lyx/doc/[A-Z]*
@@ -150,6 +149,7 @@ umask 022
 %lang(es) %{_datadir}/lyx/doc/es
 %lang(eu) %{_datadir}/lyx/doc/eu
 %lang(fr) %{_datadir}/lyx/doc/fr
+%lang(gl) %{_datadir}/lyx/doc/gl
 %lang(he) %{_datadir}/lyx/doc/he
 %lang(hu) %{_datadir}/lyx/doc/hu
 %lang(it) %{_datadir}/lyx/doc/it
