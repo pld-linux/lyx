@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.5.1
-Release:	1
+Release:	1.1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -138,38 +138,40 @@ umask 022
 %{_datadir}/lyx/CREDITS
 %{_datadir}/lyx/bind
 %{_datadir}/lyx/chkconfig.ltx
-%{_datadir}/lyx/clipart
+%{_datadir}/lyx/doc/clipart
+%{_datadir}/lyx/doc/gl
 %attr(755,root,root) %{_datadir}/lyx/configure*
 %dir %{_datadir}/lyx/doc
 %{_datadir}/lyx/doc/[A-Z]*
-%{_datadir}/lyx/doc/*.eps
-%lang(cs) %{_datadir}/lyx/doc/cs_*
-%lang(da) %{_datadir}/lyx/doc/da_*
-%lang(de) %{_datadir}/lyx/doc/de_*
-%lang(es) %{_datadir}/lyx/doc/es_*
-%lang(eu) %{_datadir}/lyx/doc/eu_*
-%lang(fr) %{_datadir}/lyx/doc/fr_*
-%lang(he) %{_datadir}/lyx/doc/he_*
-%lang(hu) %{_datadir}/lyx/doc/hu_*
-%lang(it) %{_datadir}/lyx/doc/it_*
-%lang(nb) %{_datadir}/lyx/doc/nb_*
-%lang(nl) %{_datadir}/lyx/doc/nl_*
-%lang(pl) %{_datadir}/lyx/doc/pl_*
-%lang(pt) %{_datadir}/lyx/doc/pt_*
-%lang(ro) %{_datadir}/lyx/doc/ro_*
-%lang(ru) %{_datadir}/lyx/doc/ru_*
-%lang(sk) %{_datadir}/lyx/doc/sk_*
-%lang(sl) %{_datadir}/lyx/doc/sl_*
-%lang(sv) %{_datadir}/lyx/doc/sv_*
+#{_datadir}/lyx/doc/*.eps
+%lang(cs) %{_datadir}/lyx/doc/cs
+%lang(da) %{_datadir}/lyx/doc/da
+%lang(de) %{_datadir}/lyx/doc/de
+%lang(es) %{_datadir}/lyx/doc/es
+%lang(eu) %{_datadir}/lyx/doc/eu
+%lang(fr) %{_datadir}/lyx/doc/fr
+%lang(he) %{_datadir}/lyx/doc/he
+%lang(hu) %{_datadir}/lyx/doc/hu
+%lang(it) %{_datadir}/lyx/doc/it
+%lang(nb) %{_datadir}/lyx/doc/nb
+%lang(nl) %{_datadir}/lyx/doc/nl
+%lang(pl) %{_datadir}/lyx/doc/pl
+%lang(pt) %{_datadir}/lyx/doc/pt
+%lang(ro) %{_datadir}/lyx/doc/ro
+%lang(ru) %{_datadir}/lyx/doc/ru
+%lang(sk) %{_datadir}/lyx/doc/sk
+%lang(sl) %{_datadir}/lyx/doc/sl
+%lang(sv) %{_datadir}/lyx/doc/sv
 %{_datadir}/lyx/encodings
 %{_datadir}/lyx/examples
 %{_datadir}/lyx/external_templates
+%{_datadir}/lyx/fonts/
 %{_datadir}/lyx/images
 %{_datadir}/lyx/kbd
 %{_datadir}/lyx/languages
 %{_datadir}/lyx/layouts
 %attr(755,root,root) %{_datadir}/lyx/lyx2lyx
-%{_datadir}/lyx/lyxrc.*
+#{_datadir}/lyx/lyxrc.*
 %attr(755,root,root) %{_datadir}/lyx/scripts
 %{_datadir}/lyx/symbols
 %{_datadir}/lyx/syntax.default
