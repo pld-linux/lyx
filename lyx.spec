@@ -17,6 +17,7 @@ BuildRequires:	boost-array-devel
 BuildRequires:	boost-crc-devel
 BuildRequires:	boost-filesystem-devel
 BuildRequires:	boost-regex-devel
+BuildRequires:	boost-test-devel
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
