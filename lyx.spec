@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.5.1
-Release:	1.1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -13,14 +13,15 @@ Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://www.lyx.org/
 BuildRequires:	aiksaurus-devel
+BuildRequires:	aspell-devel
+BuildRequires:	autoconf >= 2.59-9
+BuildRequires:	automake
 BuildRequires:	boost-array-devel
+BuildRequires:	boost-bind-devel
 BuildRequires:	boost-crc-devel
 BuildRequires:	boost-filesystem-devel
 BuildRequires:	boost-regex-devel
 BuildRequires:	boost-test-devel
-BuildRequires:	aspell-devel
-BuildRequires:	autoconf >= 2.59-9
-BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	QtGui-devel
@@ -77,7 +78,6 @@ cat config/*.m4 > acinclude.m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-#CXXFLAGS="%{rpmcflags} -fno-exceptions"
 %configure \
 	--with-qt4-dir=%{_libdir}/qt4 \
 	--enable-nls \
@@ -143,7 +143,6 @@ umask 022
 %attr(755,root,root) %{_datadir}/lyx/configure*
 %dir %{_datadir}/lyx/doc
 %{_datadir}/lyx/doc/[A-Z]*
-#{_datadir}/lyx/doc/*.eps
 %lang(cs) %{_datadir}/lyx/doc/cs
 %lang(da) %{_datadir}/lyx/doc/da
 %lang(de) %{_datadir}/lyx/doc/de
@@ -172,7 +171,6 @@ umask 022
 %{_datadir}/lyx/languages
 %{_datadir}/lyx/layouts
 %attr(755,root,root) %{_datadir}/lyx/lyx2lyx
-#{_datadir}/lyx/lyxrc.*
 %attr(755,root,root) %{_datadir}/lyx/scripts
 %{_datadir}/lyx/symbols
 %{_datadir}/lyx/syntax.default
