@@ -12,6 +12,7 @@ Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.bz2
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://www.lyx.org/
+BuildRequires:	QtGui-devel
 BuildRequires:	aiksaurus-devel
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf >= 2.59-9
@@ -22,9 +23,7 @@ BuildRequires:	boost-crc-devel
 BuildRequires:	boost-filesystem-devel
 BuildRequires:	boost-regex-devel
 BuildRequires:	boost-test-devel
-BuildRequires:	bzip2-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:	QtGui-devel
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libX11-devel
@@ -82,7 +81,7 @@ cat config/*.m4 > acinclude.m4
 	%{!?debug:--without-debug} \
 	--with-frontend=qt4 \
 	--with-qt-includes=%{_includedir}/qt \
-	--with-pspell 
+	--with-pspell
 
 %{__make} all
 
