@@ -26,11 +26,7 @@ BuildRequires:	bzip2-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	QtGui-devel
 BuildRequires:	rpm-pythonprov
-# for xfonts generation
-BuildRequires:	kpathsea
 BuildRequires:	sed >= 4.0
-BuildRequires:	tetex-fonts-type1-bluesky
-BuildRequires:	tetex-fonts-type1-hoekwater
 BuildRequires:	xorg-lib-libX11-devel
 Requires(post,postun):	tetex
 Requires:	gv
