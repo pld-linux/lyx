@@ -2,10 +2,9 @@
 Name=LyX
 Comment=A WYSIWYG frontend to LaTeX
 Comment[pl]=Nakładka typu WYSIWYG na LaTeXa
-Icon=lyx.png
+Icon=lyx
 Exec=lyx
 Terminal=false
 Type=Application
-Encoding=UTF-8
 Categories=Qt;Office;WordProcessor;
 # vi: encoding=utf-8
