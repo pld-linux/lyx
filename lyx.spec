@@ -22,6 +22,7 @@ BuildRequires:	boost-bind-devel
 BuildRequires:	boost-crc-devel
 BuildRequires:	boost-filesystem-devel
 BuildRequires:	boost-regex-devel
+BuildRequires:	boost-signals-devel
 BuildRequires:	boost-test-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	rpm-pythonprov
