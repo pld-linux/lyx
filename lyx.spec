@@ -17,13 +17,7 @@ BuildRequires:	aiksaurus-devel
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
-BuildRequires:	boost-array-devel
-BuildRequires:	boost-bind-devel
-BuildRequires:	boost-crc-devel
-BuildRequires:	boost-filesystem-devel
-BuildRequires:	boost-regex-devel
-BuildRequires:	boost-signals-devel
-BuildRequires:	boost-test-devel
+BuildRequires:	boost-devel >= 1.35.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
