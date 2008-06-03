@@ -1,9 +1,13 @@
+#
+# Conditional build:
+%bcond_with	system_boost	# use system boost (currently broken, requires boost-1.34)
+#
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.5.5
-Release:	0.1
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -17,7 +21,7 @@ BuildRequires:	aiksaurus-devel
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
-BuildRequires:	boost-devel >= 1.35.0
+%{?with_system_boost:BuildRequires:	boost-devel >= 1.35.0}
 BuildRequires:	libstdc++-devel
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
@@ -72,7 +76,7 @@ cat config/*.m4 > acinclude.m4
 	--with-qt4-dir=%{_libdir}/qt4 \
 	--enable-nls \
 	--without-included-gettext \
-	--without-included-boost \
+	%{?with_system_boost:--without-included-boost} \
 	%{!?debug:--without-debug} \
 	--with-frontend=qt4 \
 	--with-qt-includes=%{_includedir}/qt \
