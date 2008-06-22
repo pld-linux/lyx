@@ -24,6 +24,7 @@ BuildRequires:	automake
 %{?with_system_boost:BuildRequires:	boost-devel >= 1.35.0}
 BuildRequires:	gettext-devel
 BuildRequires:	libstdc++-devel
+BuildRequires:	pkgconfig
 BuildRequires:	qt4-build
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
