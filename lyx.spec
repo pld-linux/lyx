@@ -7,7 +7,7 @@ Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.5.6
-Release:	0.1
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -67,7 +67,6 @@ selecionadas pelo editor, não pelo digitador.
 
 %prep
 %setup -q
-%{__perl} -pi -e 's/-lqt-mt -lqt-mt3 -lqt3 -lqt2 -lqt/-lqt-mt/' config/qt.m4
 
 %build
 cat config/*.m4 > acinclude.m4
