@@ -75,13 +75,12 @@ cat config/*.m4 > acinclude.m4
 %{__autoheader}
 %{__automake}
 %configure \
-	--with-qt4-dir=%{_libdir}/qt4 \
+	%{?debug:--enable-debug} \
 	--enable-nls \
-	--without-included-gettext \
 	%{?with_system_boost:--without-included-boost} \
-	%{!?debug:--without-debug} \
+	--without-included-gettext \
+	--with-qt4-dir=%{_libdir}/qt4 \
 	--with-frontend=qt4 \
-	--with-qt-includes=%{_includedir}/qt \
 	--with-pspell
 
 %{__make} all
