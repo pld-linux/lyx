@@ -29,6 +29,7 @@ BuildRequires:	qt4-build
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	readline-devel
 Requires(post,postun):	tetex
 Requires:	gv
 Requires:	python-modules
