@@ -6,13 +6,13 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.5.6
+Version:	1.6.0
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
 Source0:	ftp://ftp.lyx.org/pub/lyx/stable/%{name}-%{version}.tar.bz2
-# Source0-md5:	69f2eecba80b143554911c8b3d814a0e
+# Source0-md5:	a51469e84e3c377df94a1546cf3077b6
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://www.lyx.org/
@@ -131,14 +131,17 @@ umask 022
 %attr(755,root,root) %{_bindir}/*
 %dir %{texmfdir}/tex/latex/lyx
 %dir %{_datadir}/lyx
+%dir %{_datadir}/lyx/commands
 %{_datadir}/lyx/CREDITS
 %{_datadir}/lyx/bind
 %{_datadir}/lyx/chkconfig.ltx
+%{_datadir}/lyx/commands/default.def
 %{_datadir}/lyx/doc/clipart
 %attr(755,root,root) %{_datadir}/lyx/configure*
 %dir %{_datadir}/lyx/doc
 %{_datadir}/lyx/doc/[A-Z]*
 %{_datadir}/lyx/doc/biblio
+%lang(ca) %{_datadir}/lyx/doc/ca
 %lang(cs) %{_datadir}/lyx/doc/cs
 %lang(da) %{_datadir}/lyx/doc/da
 %lang(de) %{_datadir}/lyx/doc/de
@@ -149,6 +152,7 @@ umask 022
 %lang(he) %{_datadir}/lyx/doc/he
 %lang(hu) %{_datadir}/lyx/doc/hu
 %lang(it) %{_datadir}/lyx/doc/it
+%lang(ja) %{_datadir}/lyx/doc/ja
 %lang(nb) %{_datadir}/lyx/doc/nb
 %lang(nl) %{_datadir}/lyx/doc/nl
 %lang(pl) %{_datadir}/lyx/doc/pl
@@ -158,6 +162,7 @@ umask 022
 %lang(sk) %{_datadir}/lyx/doc/sk
 %lang(sl) %{_datadir}/lyx/doc/sl
 %lang(sv) %{_datadir}/lyx/doc/sv
+%lang(uk) %{_datadir}/lyx/doc/uk
 %{_datadir}/lyx/encodings
 %{_datadir}/lyx/examples
 %{_datadir}/lyx/external_templates
