@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	system_boost	# use system boost (currently broken, requires boost-1.34)
+%bcond_without	system_boost	# build with included boost-1.36
 #
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
