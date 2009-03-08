@@ -1,3 +1,5 @@
+# TODO:
+# - tex deps (tetex-tex-babel seems to be required, but I'm not sure)
 #
 # Conditional build:
 %bcond_without	system_boost	# build with included boost-1.36
@@ -32,6 +34,7 @@ BuildRequires:	xorg-lib-libX11-devel
 Requires(post,postun):	tetex
 Requires:	gv
 Requires:	python-modules
+Requires:	tetex-format-latex
 Requires:	tetex-latex
 Requires:	xdvi
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
