@@ -9,7 +9,7 @@ Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.6.2
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
@@ -17,6 +17,7 @@ Source0:	http://ftp.lyx.org/pub/lyx/stable/1.6.x/%{name}-%{version}.tar.gz
 # Source0-md5:	8b1aa746e83d016d39142957eeb0f275
 Source1:	%{name}.desktop
 Source2:	%{name}.png
+Patch0:		%{name}-am.patch
 URL:		http://www.lyx.org/
 BuildRequires:	QtGui-devel
 BuildRequires:	aiksaurus-devel
@@ -70,6 +71,7 @@ selecionadas pelo editor, não pelo digitador.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 cat config/*.m4 > acinclude.m4
