@@ -1,0 +1,10 @@
+--- lyx-1.6.2/lib/Makefile.am.orig	2009-03-06 23:50:50.000000000 +0100
++++ lyx-1.6.2/lib/Makefile.am	2009-06-21 14:41:26.857414983 +0200
+@@ -412,7 +412,6 @@
+ 
+ imagesmathdir = $(imagesdir)/math
+ dist_imagesmath_DATA = \
+-	images/math/style.png \
+ 	images/math/font.png \
+ 	images/math/delim.png \
+ 	images/math/equation.png \
