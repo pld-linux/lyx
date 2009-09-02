@@ -8,13 +8,13 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.6.4
-Release:	2
+Version:	1.6.4.1
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
 Source0:	http://ftp.lyx.org/pub/lyx/stable/1.6.x/%{name}-%{version}.tar.gz
-# Source0-md5:	af662015c9ca41261d9f5145a08a8ce9
+# Source0-md5:	eaf7b66d91402fb679ef2ef954f2a41c
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://www.lyx.org/
