@@ -9,7 +9,7 @@ Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	1.6.5
-Release:	3
+Release:	4
 Epoch:		1
 License:	GPL
 Group:		Applications/Publishing/TeX
