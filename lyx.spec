@@ -17,6 +17,7 @@ Source0:	http://ftp.lyx.org/pub/lyx/stable/1.6.x/%{name}-%{version}.tar.gz
 # Source0-md5:	b93875104a3bfb5d4d9ad897c2feb6b3
 Source1:	%{name}.desktop
 Source2:	%{name}.png
+Patch0:		link.patch
 URL:		http://www.lyx.org/
 BuildRequires:	QtGui-devel
 BuildRequires:	aiksaurus-devel
@@ -70,6 +71,7 @@ selecionadas pelo editor, não pelo digitador.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 cat config/*.m4 > acinclude.m4

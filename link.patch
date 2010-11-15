@@ -1,0 +1,11 @@
+--- lyx-1.6.5/src/frontends/qt4/Makefile.am.orig	2010-11-08 22:18:54.318411158 +0100
++++ lyx-1.6.5/src/frontends/qt4/Makefile.am	2010-11-08 22:21:12.768397480 +0100
+@@ -35,7 +35,7 @@ noinst_LTLIBRARIES = liblyxqt4.la
+ 
+ liblyxqt4_la_DEPENDENCIES = $(MOCEDFILES)
+ liblyxqt4_la_LDFLAGS = $(QT4_LDFLAGS)
+-liblyxqt4_la_LIBADD = $(QT4_LIB) 
++liblyxqt4_la_LIBADD = $(QT4_LIB) -lX11
+ 
+ AM_CPPFLAGS += \
+ 	$(QT4_CPPFLAGS) \
