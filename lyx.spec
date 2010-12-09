@@ -4,20 +4,20 @@
 # Conditional build:
 %bcond_without	system_boost	# build with included boost-1.36
 #
+%define		_beta	beta2
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.6.8
-Release:	1
+Version:	2.0.0
+Release:	0.%{_beta}.1
 Epoch:		1
-License:	GPL
+License:	GPL v2+
 Group:		Applications/Publishing/TeX
-Source0:	http://ftp.lyx.org/pub/lyx/stable/1.6.x/%{name}-%{version}.tar.gz
-# Source0-md5:	9ca9beaf4ffdd750fe048834096ddec7
+Source0:	http://ftp.lyx.org/pub/lyx/devel/lyx-2.0/%{_beta}/%{name}-%{version}%{_beta}.tar.gz
+# Source0-md5:	da0d02394b17a7b36ca42fbd6d5bf760
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Patch0:		link.patch
 URL:		http://www.lyx.org/
 BuildRequires:	QtGui-devel
 BuildRequires:	aiksaurus-devel
@@ -70,8 +70,7 @@ de textos que irá aumentar a produtividade visto que as fontes serão
 selecionadas pelo editor, não pelo digitador.
 
 %prep
-%setup -q
-%patch0 -p1
+%setup -q -n %{name}-%{version}%{_beta}
 
 %build
 cat config/*.m4 > acinclude.m4
@@ -101,10 +100,9 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}} \
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
-rm -f $RPM_BUILD_ROOT%{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 ln -sf %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{texmfdir}/tex/latex/lyx
 
-sed -i -e 's,#! /usr/bin/env python,#!/usr/bin/python,' $RPM_BUILD_ROOT%{_datadir}/lyx/configure.py
+%{__sed} -i -e 's,#! /usr/bin/env python,#!/usr/bin/python,' $RPM_BUILD_ROOT%{_datadir}/lyx/configure.py
 
 %find_lang %{name}
 
