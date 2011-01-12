@@ -4,7 +4,7 @@
 # Conditional build:
 %bcond_without	system_boost	# build with included boost-1.36
 #
-%define		_beta	beta2
+%define		_beta	beta3
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
@@ -15,7 +15,7 @@ Epoch:		1
 License:	GPL v2+
 Group:		Applications/Publishing/TeX
 Source0:	http://ftp.lyx.org/pub/lyx/devel/lyx-2.0/%{_beta}/%{name}-%{version}%{_beta}.tar.gz
-# Source0-md5:	da0d02394b17a7b36ca42fbd6d5bf760
+# Source0-md5:	055ad581e38b5021459f3a02558a652e
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://www.lyx.org/
