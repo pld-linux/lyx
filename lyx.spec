@@ -8,13 +8,13 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	1.6.8
+Version:	1.6.9
 Release:	1
 Epoch:		1
-License:	GPL
+License:	GPL v2+
 Group:		Applications/Publishing/TeX
 Source0:	http://ftp.lyx.org/pub/lyx/stable/1.6.x/%{name}-%{version}.tar.gz
-# Source0-md5:	9ca9beaf4ffdd750fe048834096ddec7
+# Source0-md5:	34de2ca672a0901760aa92d48936f809
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		link.patch
@@ -101,10 +101,10 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}} \
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
-rm -f $RPM_BUILD_ROOT%{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/lyx/doc/LaTeXConfig.lyx
 ln -sf %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{texmfdir}/tex/latex/lyx
 
-sed -i -e 's,#! /usr/bin/env python,#!/usr/bin/python,' $RPM_BUILD_ROOT%{_datadir}/lyx/configure.py
+%{__sed} -i -e 's,#! /usr/bin/env python,#!/usr/bin/python,' $RPM_BUILD_ROOT%{_datadir}/lyx/configure.py
 
 %find_lang %{name}
 
@@ -122,8 +122,8 @@ fi
 
 %preun
 if [ "$1" = "0" ]; then
-	rm -f %{_datadir}/lyx/{lyxrc.defaults,lyxrc*}
-	rm -f %{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
+	%{__rm} -f %{_datadir}/lyx/{lyxrc.defaults,lyxrc*}
+	%{__rm} -f %{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 fi
 
 %postun
