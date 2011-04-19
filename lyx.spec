@@ -4,7 +4,7 @@
 # Conditional build:
 %bcond_without	system_boost	# build with included boost-1.36
 #
-%define		_beta	beta4
+%define		_rc	rc3
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
@@ -14,8 +14,8 @@ Release:	0.%{_beta}.1
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Publishing/TeX
-Source0:	http://ftp.lyx.org/pub/lyx/devel/lyx-2.0/%{_beta}/%{name}-%{version}%{_beta}.tar.gz
-# Source0-md5:	7d0d02441155b7e938d291e82dae2c31
+Source0:	http://ftp.lyx.org/pub/lyx/devel/lyx-2.0/%{_rc}/%{name}-%{version}%{_rc}.tar.gz
+# Source0-md5:	2d8013cfebdeb13e345c40fcf190dad0
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://www.lyx.org/
@@ -70,7 +70,7 @@ de textos que irá aumentar a produtividade visto que as fontes serão
 selecionadas pelo editor, não pelo digitador.
 
 %prep
-%setup -q -n %{name}-%{version}%{_beta}
+%setup -q -n %{name}-%{version}%{_rc}
 
 %build
 cat config/*.m4 > acinclude.m4
@@ -120,8 +120,8 @@ fi
 
 %preun
 if [ "$1" = "0" ]; then
-	rm -f %{_datadir}/lyx/{lyxrc.defaults,lyxrc*}
-	rm -f %{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
+	%{__rm} -f %{_datadir}/lyx/{lyxrc.defaults,lyxrc*}
+	%{__rm} -f %{_datadir}/lyx/{doc/LaTeXConfig.lyx,packages.lst}
 fi
 
 %postun
