@@ -4,18 +4,17 @@
 # Conditional build:
 %bcond_without	system_boost	# build with included boost-1.36
 #
-%define		_rc	rc3
 Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	2.0.0
-Release:	0.%{_beta}.1
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Publishing/TeX
-Source0:	http://ftp.lyx.org/pub/lyx/devel/lyx-2.0/%{_rc}/%{name}-%{version}%{_rc}.tar.gz
-# Source0-md5:	2d8013cfebdeb13e345c40fcf190dad0
+Source0:	http://ftp.lyx.org/pub/lyx/stable/2.0.x/%{name}-%{version}.tar.xz
+# Source0-md5:	005dc04ad01e1b2bd92ec86b6235f8b1
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://www.lyx.org/
@@ -70,7 +69,7 @@ de textos que irá aumentar a produtividade visto que as fontes serão
 selecionadas pelo editor, não pelo digitador.
 
 %prep
-%setup -q -n %{name}-%{version}%{_rc}
+%setup -q
 
 %build
 cat config/*.m4 > acinclude.m4
@@ -84,8 +83,7 @@ cat config/*.m4 > acinclude.m4
 	%{?with_system_boost:--without-included-boost} \
 	--without-included-gettext \
 	--with-qt4-dir=%{_libdir}/qt4 \
-	--with-frontend=qt4 \
-	--with-pspell
+	--with-frontend=qt4
 
 %{__make} all
 
@@ -177,6 +175,7 @@ umask 022
 %{_datadir}/lyx/kbd
 %{_datadir}/lyx/languages
 %{_datadir}/lyx/layouts
+%{_datadir}/lyx/layouttranslations
 %attr(755,root,root) %{_datadir}/lyx/lyx2lyx
 %attr(755,root,root) %{_datadir}/lyx/scripts
 %{_datadir}/lyx/symbols
