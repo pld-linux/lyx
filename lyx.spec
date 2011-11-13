@@ -8,13 +8,13 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	2.0.0
+Version:	2.0.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Publishing/TeX
 Source0:	http://ftp.lyx.org/pub/lyx/stable/2.0.x/%{name}-%{version}.tar.xz
-# Source0-md5:	005dc04ad01e1b2bd92ec86b6235f8b1
+# Source0-md5:	cdd60ce1c5a81ed878a5dca6f5db1543
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 URL:		http://www.lyx.org/
@@ -167,6 +167,7 @@ umask 022
 %lang(sv) %{_datadir}/lyx/doc/sv
 %lang(uk) %{_datadir}/lyx/doc/uk
 %lang(zh_CN) %{_datadir}/lyx/doc/zh_CN
+%{_datadir}/lyx/autocorrect
 %{_datadir}/lyx/encodings
 %{_datadir}/lyx/examples
 %{_datadir}/lyx/external_templates
