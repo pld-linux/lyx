@@ -24,7 +24,7 @@ BuildRequires:	aspell-devel
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
 %{?with_system_boost:BuildRequires:	boost-devel >= 1.35.0}
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig
 BuildRequires:	qt4-build
