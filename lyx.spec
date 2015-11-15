@@ -189,3 +189,6 @@ umask 022
 %{_mandir}/man*/*
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
+%{_iconsdir}/hicolor/48x48/apps/lyx.png
+%{_iconsdir}/hicolor/scalable/apps/lyx.svg
+%{_datadir}/lyx/latexfonts
