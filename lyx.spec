@@ -9,7 +9,7 @@ Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	2.1.4
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Publishing/TeX
@@ -103,7 +103,7 @@ ln -sf %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{texmfdir}/tex/latex/lyx
 
 %{__sed} -i -e 's,#! /usr/bin/env python,#!/usr/bin/python,' $RPM_BUILD_ROOT%{_datadir}/lyx/configure.py
 
-%{__rm} -r /usr/share/locale/pt_PT
+%{__rm} -r $RPM_BUILD_ROOT/usr/share/locale/pt_PT
 
 %find_lang %{name}
 
