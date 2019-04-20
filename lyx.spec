@@ -8,17 +8,23 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	2.2.3
+Version:	2.3.2
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Publishing/TeX
-Source0:	http://ftp.lyx.org/pub/lyx/stable/2.2.x/%{name}-%{version}.tar.xz
-# Source0-md5:	032147bf8e05040787b0fca43fd70de3
+Source0:	http://ftp.lyx.org/pub/lyx/stable/2.3.x/%{name}-%{version}.tar.xz
+# Source0-md5:	7e32b2e4440f2d47053610250840080b
 Source1:	%{name}.desktop
 Source2:	%{name}.png
+Patch0:		qt-ac.patch
+Patch1:		boost-1.69.patch
 URL:		http://www.lyx.org/
-BuildRequires:	QtGui-devel
+BuildRequires:	Qt5Core-devel
+BuildRequires:	Qt5Gui-devel
+BuildRequires:	Qt5Svg-devel
+BuildRequires:	Qt5Concurrent-devel
+BuildRequires:	Qt5Widgets-devel
 BuildRequires:	aiksaurus-devel
 BuildRequires:	aspell-devel
 BuildRequires:	autoconf >= 2.59-9
@@ -27,7 +33,7 @@ BuildRequires:	automake
 BuildRequires:	gettext-tools
 BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig
-BuildRequires:	qt4-build
+BuildRequires:	qt5-build
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libX11-devel
@@ -70,6 +76,8 @@ selecionadas pelo editor, não pelo digitador.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 cat config/*.m4 > acinclude.m4
@@ -82,9 +90,9 @@ cat config/*.m4 > acinclude.m4
 	%{?debug:--enable-debug} \
 	--enable-nls \
 	%{?with_system_boost:--without-included-boost} \
-	--without-included-gettext \
-	--with-qt4-dir=%{_libdir}/qt4 \
-	--with-frontend=qt4
+	--enable-qt5 \
+	--with-qt-dir=%{_libdir}/qt5 \
+	--with-qt-includes=%{_includedir}/qt5
 
 %{__make} all
 
@@ -172,9 +180,9 @@ umask 022
 %lang(uk) %{_datadir}/lyx/doc/uk
 %lang(zh_CN) %{_datadir}/lyx/doc/zh_CN
 %{_datadir}/lyx/autocorrect
+%{_datadir}/lyx/citeengines
 %{_datadir}/lyx/encodings
 %{_datadir}/lyx/examples
-%{_datadir}/lyx/external_templates
 %{_datadir}/lyx/fonts/
 %{_datadir}/lyx/images
 %{_datadir}/lyx/kbd
@@ -189,6 +197,7 @@ umask 022
 %{_datadir}/lyx/tex
 %{_datadir}/lyx/ui
 %{_datadir}/lyx/unicodesymbols
+%{_datadir}/lyx/xtemplates
 %{_mandir}/man*/*
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*

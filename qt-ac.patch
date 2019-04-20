@@ -1,0 +1,22 @@
+--- lyx-2.3.2/config/qt4.m4.orig	2018-12-09 21:04:52.000000000 +0100
++++ lyx-2.3.2/config/qt4.m4	2019-04-20 08:21:06.607279868 +0200
+@@ -34,7 +34,7 @@
+ 		    qt_corelibs="-lQt5Core"
+ 		    qt_guilibs="-lQt5Core -lQt5Concurrent -lQt5Gui -lQt5Svg -lQt5Widgets"
+ 		fi
+-		for libname in $qt_corelibs '-framework QtCore'
++		for libname in $qt_corelibs
+ 		do
+ 			QT_TRY_LINK($libname)
+ 			if test -n "$qt_cv_libname"; then
+@@ -43,9 +43,7 @@
+ 			fi
+ 		done
+ 		qt_cv_libname=
+-		for libname in $qt_guilibs \
+-		               '-framework QtCore -framework QtConcurrent -framework QtSvg -framework QtWidgets -framework QtMacExtras -framework QtGui'\
+-		               '-framework QtCore -framework QtGui'
++		for libname in $qt_guilibs
+ 		do
+ 			QT_TRY_LINK($libname)
+ 			if test -n "$qt_cv_libname"; then
