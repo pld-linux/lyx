@@ -20,29 +20,38 @@ Source2:	%{name}.png
 Patch0:		qt-ac.patch
 Patch1:		boost-1.69.patch
 URL:		http://www.lyx.org/
-BuildRequires:	Qt5Core-devel
-BuildRequires:	Qt5Gui-devel
-BuildRequires:	Qt5Svg-devel
-BuildRequires:	Qt5Concurrent-devel
-BuildRequires:	Qt5Widgets-devel
-BuildRequires:	aiksaurus-devel
-BuildRequires:	aspell-devel
-BuildRequires:	autoconf >= 2.59-9
-BuildRequires:	automake
+BuildRequires:	Qt5Core-devel >= 5
+BuildRequires:	Qt5Gui-devel >= 5
+BuildRequires:	Qt5Svg-devel >= 5
+BuildRequires:	Qt5Concurrent-devel >= 5
+BuildRequires:	Qt5Widgets-devel >= 5
+BuildRequires:	aspell-devel >= 2:0.50
+BuildRequires:	autoconf >= 2.65
+BuildRequires:	automake >= 1:1.11
 %{?with_system_boost:BuildRequires:	boost-devel >= 1.35.0}
+BuildRequires:	enchant2-devel >= 2
 BuildRequires:	gettext-tools
+BuildRequires:	hunspell-devel >= 1.6.2
+BuildRequires:	libmagic-devel
 BuildRequires:	libstdc++-devel
+# TODO: bump to 1.2.5 once released
+BuildRequires:	mythes-devel >= 1.2.4
 BuildRequires:	pkgconfig
-BuildRequires:	qt5-build
+BuildRequires:	python >= 1:2.7.0
+BuildRequires:	qt5-build >= 5
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	zlib-devel >= 1.2.8
 Requires(post,postun):	tetex
 Requires:	gv
-Requires:	python-modules
+Requires:	hunspell-libs >= 1.6.2
+Requires:	mythes >= 1.2.4
+Requires:	python-modules >= 1:2.7.0
 Requires:	tetex-format-latex
 Requires:	tetex-latex
 Requires:	xdvi
+Requires:	zlib >= 1.2.8
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		texmfdir	%{_datadir}/texmf
@@ -80,8 +89,7 @@ selecionadas pelo editor, não pelo digitador.
 %patch1 -p1
 
 %build
-cat config/*.m4 > acinclude.m4
-%{__aclocal} -I m4
+%{__aclocal} -I m4 -I config
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -140,7 +148,9 @@ umask 022
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc ANNOUNCE README NEWS
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/lyx
+%attr(755,root,root) %{_bindir}/lyxclient
+%attr(755,root,root) %{_bindir}/tex2lyx
 %dir %{texmfdir}/tex/latex/lyx
 %dir %{_datadir}/lyx
 %dir %{_datadir}/lyx/commands
@@ -198,9 +208,11 @@ umask 022
 %{_datadir}/lyx/ui
 %{_datadir}/lyx/unicodesymbols
 %{_datadir}/lyx/xtemplates
-%{_mandir}/man*/*
-%{_desktopdir}/*.desktop
-%{_pixmapsdir}/*
+%{_mandir}/man1/lyx.1*
+%{_mandir}/man1/lyxclient.1*
+%{_mandir}/man1/tex2lyx.1*
+%{_desktopdir}/lyx.desktop
+%{_pixmapsdir}/lyx.png
 %{_iconsdir}/hicolor/48x48/apps/lyx.png
 %{_iconsdir}/hicolor/scalable/apps/lyx.svg
 %{_datadir}/lyx/latexfonts
