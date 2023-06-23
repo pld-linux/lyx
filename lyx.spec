@@ -8,13 +8,13 @@ Summary:	A WYSIWYM frontend to LaTeX
 Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
-Version:	2.3.2
-Release:	1
+Version:	2.3.7
+Release:	0.1
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Publishing/TeX
-Source0:	http://ftp.lyx.org/pub/lyx/stable/2.3.x/%{name}-%{version}.tar.xz
-# Source0-md5:	7e32b2e4440f2d47053610250840080b
+Source0:	http://ftp.lyx.org/pub/lyx/stable/2.3.x/%{name}-%{version}-1.tar.xz
+# Source0-md5:	d12aa448dc0fcc209f9baa8c13123840
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		qt-ac.patch
@@ -34,10 +34,9 @@ BuildRequires:	gettext-tools
 BuildRequires:	hunspell-devel >= 1.6.2
 BuildRequires:	libmagic-devel
 BuildRequires:	libstdc++-devel
-# TODO: bump to 1.2.5 once released
-BuildRequires:	mythes-devel >= 1.2.4
+BuildRequires:	mythes-devel >= 1.2.5
 BuildRequires:	pkgconfig
-BuildRequires:	python >= 1:2.7.0
+BuildRequires:	python3 >= 3.3.0
 BuildRequires:	qt5-build >= 5
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
@@ -46,7 +45,7 @@ BuildRequires:	zlib-devel >= 1.2.8
 Requires(post,postun):	tetex
 Requires:	gv
 Requires:	hunspell-libs >= 1.6.2
-Requires:	mythes >= 1.2.4
+Requires:	mythes >= 1.2.5
 Requires:	python-modules >= 1:2.7.0
 Requires:	tetex-format-latex
 Requires:	tetex-latex
@@ -85,8 +84,14 @@ selecionadas pelo editor, não pelo digitador.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+#%patch0 -p1
+#%patch1 -p1
+%{__sed} -i '1s,/usr/bin/env python$,%{__python3},' \
+	lib/scripts/{listerrors,svg2pdftex.py,svg2pstex.py} \
+	lib/lyx2lyx/lyx2lyx
+%{__sed} -i '1s,/usr/bin/python$,%{__python3},' \
+	lib/configure.py \
+	lib/scripts/gnuplot2pdf.py
 
 %build
 %{__aclocal} -I m4 -I config
@@ -116,8 +121,6 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 ln -sf %{_datadir}/lyx/tex $RPM_BUILD_ROOT%{texmfdir}/tex/latex/lyx
-
-%{__sed} -i -e 's,#! /usr/bin/env python,#!/usr/bin/python,' $RPM_BUILD_ROOT%{_datadir}/lyx/configure.py
 
 %{__rm} -r $RPM_BUILD_ROOT/usr/share/locale/pt_PT
 
@@ -151,10 +154,12 @@ umask 022
 %attr(755,root,root) %{_bindir}/lyx
 %attr(755,root,root) %{_bindir}/lyxclient
 %attr(755,root,root) %{_bindir}/tex2lyx
-%dir %{texmfdir}/tex/latex/lyx
+#%dir %{texmfdir}/tex/latex
+%{texmfdir}/tex/latex/lyx
 %dir %{_datadir}/lyx
 %dir %{_datadir}/lyx/commands
 %{_datadir}/lyx/CREDITS
+%{_datadir}/lyx/RELEASE-NOTES
 %{_datadir}/lyx/bind
 %{_datadir}/lyx/chkconfig.ltx
 %{_datadir}/lyx/commands/default.def
