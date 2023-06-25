@@ -9,7 +9,7 @@ Summary(pl.UTF-8):	Nakładka WYSIWYM na LaTeXa
 Summary(pt_BR.UTF-8):	Editor de Textos para ambiente Desktop
 Name:		lyx
 Version:	2.3.7
-Release:	0.1
+Release:	0.2
 Epoch:		1
 License:	GPL v2+
 Group:		Applications/Publishing/TeX
@@ -17,8 +17,6 @@ Source0:	http://ftp.lyx.org/pub/lyx/stable/2.3.x/%{name}-%{version}-1.tar.xz
 # Source0-md5:	d12aa448dc0fcc209f9baa8c13123840
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Patch0:		qt-ac.patch
-Patch1:		boost-1.69.patch
 URL:		http://www.lyx.org/
 BuildRequires:	Qt5Core-devel >= 5
 BuildRequires:	Qt5Gui-devel >= 5
@@ -42,15 +40,23 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel >= 1.2.8
+BuildConflicts:	python >= 2
 Requires(post,postun):	tetex
 Requires:	gv
 Requires:	hunspell-libs >= 1.6.2
 Requires:	mythes >= 1.2.5
-Requires:	python-modules >= 1:2.7.0
+Requires:	python3-modules >= 3.3.0
 Requires:	tetex-format-latex
 Requires:	tetex-latex
+Requires:	texlive-latex-other
 Requires:	xdvi
 Requires:	zlib >= 1.2.8
+Suggests:	texlive-dviutils
+Suggests:	texlive-latex-bibtex
+Suggests:	texlive-latex-ams
+Suggests:	texlive-latex-beamer
+Suggests:	texlive-latex-pgf
+Suggests:	texlive-xetex
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		texmfdir	%{_datadir}/texmf
@@ -84,8 +90,6 @@ selecionadas pelo editor, não pelo digitador.
 
 %prep
 %setup -q
-#%patch0 -p1
-#%patch1 -p1
 %{__sed} -i '1s,/usr/bin/env python$,%{__python3},' \
 	lib/scripts/{listerrors,svg2pdftex.py,svg2pstex.py} \
 	lib/lyx2lyx/lyx2lyx
