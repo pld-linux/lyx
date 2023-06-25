@@ -40,7 +40,6 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel >= 1.2.8
-BuildConflicts:	python >= 2
 Requires(post,postun):	tetex
 Requires:	gv
 Requires:	hunspell-libs >= 1.6.2
@@ -98,6 +97,7 @@ selecionadas pelo editor, não pelo digitador.
 	lib/scripts/gnuplot2pdf.py
 
 %build
+export PYTHON="%{__python3}"
 %{__aclocal} -I m4 -I config
 %{__autoconf}
 %{__autoheader}
